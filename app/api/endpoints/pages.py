@@ -9,11 +9,11 @@ def index_page():
     return FileResponse("app/templates/index.html")
 
 
-@router.get("/get_prediction")
+@router.post("/get_prediction")
 def get_prediction_page():
     return FileResponse("app/templates/get_prediction.html")
 
 
-@router.get("/questions")
+@router.post("/questions")
 def questions_page():
     return FileResponse("app/templates/questions.html")
