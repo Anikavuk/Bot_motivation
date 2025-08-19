@@ -5,15 +5,18 @@ router = APIRouter()
 
 
 @router.get("/")
-def index_page():
+def index():
+    """Метод загрузки стартовой страницы"""
     return FileResponse("app/templates/index.html")
 
 
 @router.post("/get_prediction")
-def get_prediction_page():
+def get_prediction():
+    """Метод загрузки страницы с предсказанием"""
     return FileResponse("app/templates/get_prediction.html")
 
 
 @router.post("/questions")
-def questions_page():
+def questions():
+    """Метод загрузки анкеты пользователя"""
     return FileResponse("app/templates/questions.html")
