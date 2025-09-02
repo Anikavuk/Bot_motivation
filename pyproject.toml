@@ -1,0 +1,11 @@
+[project]
+name = "prediction-app"
+version = "0.1.0"
+description = "A bot with motivating predictions"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.116.1",
+    "pre-commit>=4.3.0",
+    "uvicorn>=0.35.0",
+]
