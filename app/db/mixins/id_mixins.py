@@ -1,11 +1,10 @@
 import uuid
 
-# from sqlalchemy import UUID
-from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
+from sqlalchemy.orm import Mapped, mapped_column
 
 
-class Uuid_Mixin:
+class UuidMixin:
     """
     Класс-миксин для добавления уникального идентификатора к объектам.
 

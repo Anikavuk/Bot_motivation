@@ -1,0 +1,13 @@
+services:
+  prediction_bot:
+    image: postgres:15.2
+    container_name: prediction_bot
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: prediction_user
+      POSTGRES_PASSWORD: save
+      POSTGRES_DB: prediction_bot
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    restart: unless-stopped

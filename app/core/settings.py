@@ -28,14 +28,5 @@ class Settings(BaseSettings):
                                       env_file_encoding="utf8",
                                       extra="ignore")
 
+
 settings = Settings()
-
-
-
-# Алсу, удалить, если путь к env работает
-# from pathlib import Path
-#
-# BASE_DIR = Path(__file__).resolve().parent.parent.parent  # корень проекта, если settings.py в app/core
-# env_path = BASE_DIR / ".env"
-#
-# model_config = SettingsConfigDict(env_file=str(env_path), env_file_encoding="utf8", extra="ignore")
