@@ -5,9 +5,9 @@ services:
     ports:
       - "5433:5432"
     environment:
-      POSTGRES_USER: prediction_user
-      POSTGRES_PASSWORD: save
-      POSTGRES_DB: prediction_bot
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     volumes:
       - ./pgdata:/var/lib/postgresql/data
     restart: unless-stopped

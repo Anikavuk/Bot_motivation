@@ -1,9 +1,7 @@
-
 from datetime import datetime
 from sqlalchemy import Text, Integer, DateTime
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.orm import relationship
-
 
 from app.db.mixins.id_mixins import UuidMixin
 from app.db.models import Base
