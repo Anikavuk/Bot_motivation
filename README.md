@@ -18,6 +18,10 @@
 
 `pip install uv`
 
+## Рекомендуемый способ установки для Windows
+
+`iwr https://astral.sh/uv/install.ps1 -useb | iex`
+
 ## Проверь версию:
 
 `uv --version`
@@ -26,13 +30,13 @@
 
 `uv venv`
 
-## Установи зависимости:
-
-`uv sync`
-
 ## Активировать среду
 
 `.venv\Scripts\activate`
+
+## Установи зависимости:
+
+`uv sync`
 
 # Docker
 

@@ -16,5 +16,5 @@ class User(UuidMixin, Base):
     name: Mapped[str] = mapped_column(Text, nullable=True)
     zodiac_sign: Mapped[str] = mapped_column(Text, nullable=True)
     birthday: Mapped[datetime] = mapped_column(DateTime, nullable=True)
-    date_prediction: Mapped[datetime] = mapped_column( DateTime(timezone=True),nullable=True)
+    date_prediction: Mapped[datetime] = mapped_column(DateTime(timezone=True),nullable=True)
     prediction_table = relationship("Prediction", back_populates="user", cascade="all, delete-orphan")

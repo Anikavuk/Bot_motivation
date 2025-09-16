@@ -4,6 +4,7 @@ from sqlalchemy.orm import relationship
 
 from app.db.models import Base
 
+
 class Prediction(Base):
     """
     Класс для предсказаний.
