@@ -3,6 +3,9 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
+pgdata/
+.env
+.predict/
 .idea/
 *.iml
 .idea/**/workspace.xml
