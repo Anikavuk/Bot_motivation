@@ -1,9 +1,9 @@
 # Установка приложения в Windows без pip
 
-1. Откройте PowerShell с правами администратора и наберите:  
+1. Откройте PowerShell с правами администратора и наберите:
    `powershell -ExecutionPolicy ByPass -Command "irm https://astral.sh/uv/install.ps1 | iex"`
-2. Проверить установлен uv:  
-   `uv --version`  
+2. Проверить установлен uv:
+   `uv --version`
    _Должно выйти uv 0.8.18 (c4c47814a 2025-09-17)_
 3. Проверьте список установленных версий Python через uv командой:
    `uv python list`
