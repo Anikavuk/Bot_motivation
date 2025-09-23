@@ -8,6 +8,7 @@ dependencies = [
     "alembic>=1.16.5",
     "asyncpg>=0.30.0",
     "fastapi>=0.116.1",
+    "ollama>=0.5.4",
     "pre-commit>=4.3.0",
     "pydantic-settings>=2.10.1",
     "sqlalchemy>=2.0.43",

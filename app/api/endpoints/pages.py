@@ -1,5 +1,8 @@
-from fastapi import APIRouter
-from fastapi.responses import FileResponse
+
+from fastapi import APIRouter, Request
+from fastapi.responses import FileResponse, PlainTextResponse
+
+from app.services.motivational_ai import OllamaMotivator
 
 router = APIRouter()
 
@@ -11,9 +14,11 @@ def index():
 
 
 @router.post("/get_prediction")
-def get_prediction():
+def get_prediction(request: Request):
     """Метод загрузки страницы с предсказанием"""
-    return FileResponse("app/templates/get_prediction.html")
+    prediction_class = OllamaMotivator()
+    prediction_text = prediction_class.get_motivational_support()
+    return PlainTextResponse(content=prediction_text)
 
 
 @router.post("/questions")
