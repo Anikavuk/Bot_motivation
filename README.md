@@ -90,7 +90,7 @@
 `DB_HOST=localhost`  
 `DB_PORT=5433`  
 `DB_ECHO=True`  
- 
+ `HF_TOKEN=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`
 # Запустите Docker  
 
 `docker-compose -f docker-compose.dev.yaml up -d`  
