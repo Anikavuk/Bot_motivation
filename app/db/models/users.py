@@ -12,9 +12,16 @@ class User(UuidMixin, Base):
     Класс User представляет пользователя в системе.
 
     """
-    id: Mapped[int] = mapped_column(Integer, autoincrement=True, primary_key=True, unique=True, nullable=False)
+
+    id: Mapped[int] = mapped_column(
+        Integer, autoincrement=True, primary_key=True, unique=True, nullable=False
+    )
     name: Mapped[str] = mapped_column(Text, nullable=True)
     zodiac_sign: Mapped[str] = mapped_column(Text, nullable=True)
     birthday: Mapped[datetime] = mapped_column(DateTime, nullable=True)
-    date_prediction: Mapped[datetime] = mapped_column(DateTime(timezone=True),nullable=True)
-    prediction_table = relationship("Prediction", back_populates="user", cascade="all, delete-orphan")
+    date_prediction: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    prediction_table = relationship(
+        "Prediction", back_populates="user", cascade="all, delete-orphan"
+    )

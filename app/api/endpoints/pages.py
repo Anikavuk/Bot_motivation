@@ -1,22 +1,30 @@
-from fastapi import APIRouter
-from fastapi.responses import FileResponse
+from fastapi import APIRouter, Request
+from fastapi.templating import Jinja2Templates
+from app.services.motivation_ai import HuggingFacePredictor
+from fastapi.responses import HTMLResponse
+
 
 router = APIRouter()
+templates = Jinja2Templates(directory="app/templates")
 
 
-@router.get("/")
-def index():
+@router.get("/", response_class=HTMLResponse)
+def index(request: Request):
     """Метод загрузки стартовой страницы"""
-    return FileResponse("app/templates/index.html")
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
-@router.post("/get_prediction")
-def get_prediction():
+@router.post("/get_prediction", response_class=HTMLResponse)
+async def get_prediction(request: Request):
     """Метод загрузки страницы с предсказанием"""
-    return FileResponse("app/templates/get_prediction.html")
+    predictor = HuggingFacePredictor()
+    response_text = predictor.get_prediction()
+    return templates.TemplateResponse(
+        "get_prediction.html", {"request": request, "prediction": response_text}
+    )
 
 
-@router.post("/questions")
-def questions():
+@router.post("/questions", response_class=HTMLResponse)
+def questions(request: Request):
     """Метод загрузки анкеты пользователя"""
-    return FileResponse("app/templates/questions.html")
+    return templates.TemplateResponse("questions.html", {"request": request})

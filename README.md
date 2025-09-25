@@ -82,6 +82,16 @@
    `File -> Settings -> Project: твой проект -> Python  Interpreter -> Add Interpreter`  
    _В нижнем правом углу должно появиться Python c вашей версией и в скобках ваше окружение_  
 
+# Создание токена на сайте huggingface.co  
+1. Зарегистрируйтесь на сайте huggingface.co  
+2. Зайдите в профиль -> Access tokens -> Create new token:  
+заполняешь имя токена в Fine-grained  
+3. В Inference ставишь галочки  
+3.1. Make calls to Inference Providers  
+3.2. Make calls to your Inference Endpoints  
+3.3. Manage your Inference Endpoints  
+4. Жмешь кнопку "Create token"
+
 # Создайте в корневой папке проекта файл .env и скопируйте в него данные:  
 
 `DB_NAME=prediction_bot`  
@@ -90,7 +100,12 @@
 `DB_HOST=localhost`  
 `DB_PORT=5433`  
 `DB_ECHO=True`  
- 
+
+Добавьте токен, созданный инструкцией выше
+# Hugging Face
+...
+ HF_TOKEN=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
+...
 # Запустите Docker  
 
 `docker-compose -f docker-compose.dev.yaml up -d`  
