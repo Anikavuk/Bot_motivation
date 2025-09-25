@@ -12,11 +12,12 @@ class DBDependency:
         """
         Инициализирует экземпляр класса, отвечающего за взаимодействие с асинхронной базой данных.
         """
-        self._engine = create_async_engine(url=settings.db_settings.db_url,
-                                           echo=settings.db_settings.db_echo)
-        self._session_factory = async_sessionmaker(bind=self._engine,
-                                                   expire_on_commit=False,
-                                                   autocommit=False)
+        self._engine = create_async_engine(
+            url=settings.db_settings.db_url, echo=settings.db_settings.db_echo
+        )
+        self._session_factory = async_sessionmaker(
+            bind=self._engine, expire_on_commit=False, autocommit=False
+        )
 
     @property
     def db_session(self) -> async_sessionmaker[AsyncSession]:
