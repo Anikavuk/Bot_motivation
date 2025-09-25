@@ -18,5 +18,5 @@ class Prediction(Base):
         Integer, ForeignKey("user.id", ondelete="CASCADE"), nullable=False
     )
     main_prediction: Mapped[str] = mapped_column(Text)
-    extended_prediction: Mapped[str] = mapped_column(Text)
+    extended_prediction: Mapped[str] = mapped_column(Text, nullable=True)
     user = relationship("User", back_populates="prediction")
