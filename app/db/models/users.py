@@ -3,11 +3,10 @@ from sqlalchemy import Text, Integer, DateTime
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.orm import relationship
 
-from app.db.mixins.id_mixins import UuidMixin
 from app.db.models import Base
 
 
-class User(UuidMixin, Base):
+class User(Base):
     """
     Класс User представляет пользователя в системе.
 
@@ -22,6 +21,7 @@ class User(UuidMixin, Base):
     date_prediction: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=True
     )
+    session_or_telegram_id: Mapped[str] = mapped_column(Text, nullable=False)
     prediction_table = relationship(
         "Prediction", back_populates="user", cascade="all, delete-orphan"
     )
