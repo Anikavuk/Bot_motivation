@@ -13,7 +13,7 @@ class DBSettings(BaseSettings):
     db_echo: bool
 
     model_config = SettingsConfigDict(
-        env_file=".env", env_file_encoding="utf8", extra="ignore"
+        env_file=".env", env_file_encoding="utf8", extra="ignore", env_prefix="DB_"
     )
 
     @property
@@ -25,7 +25,7 @@ class HuggingFaceSettings(BaseSettings):
     hf_token: SecretStr
 
     model_config = SettingsConfigDict(
-        env_file=".env", env_file_encoding="utf8", extra="ignore"
+        env_file=".env", env_file_encoding="utf8", extra="ignore", env_prefix="DB_"
     )
 
 
@@ -36,7 +36,7 @@ class Settings(BaseSettings):
     hf_settings: HuggingFaceSettings = HuggingFaceSettings()
 
     model_config = SettingsConfigDict(
-        env_file=".env", env_file_encoding="utf8", extra="ignore"
+        env_file=".env", env_file_encoding="utf8", extra="ignore", env_prefix="DB_"
     )
 
 

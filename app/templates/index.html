@@ -3,6 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <title>Главная страница</title>
+    <style>
+      .button-row {
+        display: flex;
+        gap: 20px; /* расстояние между кнопками */
+        align-items: center;
+      }
+
+      form {
+        margin: 0; /* убрать лишние отступы форм */
+      }
+    </style>
   </head>
   <body>
     <h1>Привет, мой хороший! Я бот-мотиватор</h1>
@@ -10,10 +21,15 @@
       Я буду тебя поддерживать в трудную минуту и давать прогноз на текущий
       день.
     </p>
-    <form method="post" action="/get_prediction" class="ml-auto">
-      <button type="submit" class="btn btn-primary">
-        Получить предсказание
-      </button>
-    </form>
+    <div class="button-row">
+      <form method="post" action="/get_prediction">
+        <button type="submit" class="btn btn-primary">
+          Получить предсказание
+        </button>
+      </form>
+      <form method="get" action="/create_user">
+        <button type="submit" class="btn btn-primary">Создать аккаунт</button>
+      </form>
+    </div>
   </body>
 </html>
