@@ -1,5 +1,5 @@
 from fastapi import Depends, HTTPException
-from sqlalchemy import insert
+from sqlalchemy import insert, select
 from sqlalchemy.exc import IntegrityError
 
 from app.auth.schemas import CreateUser
@@ -31,22 +31,27 @@ class UserService:
         :type user: CreateUser
         :raises HTTPException: Если пользователь уже существует.
         """
-
-        async with self.db.db_session() as session:
-            query = (
-                insert(self.model)
-                .values(**user.model_dump())
-                .returning(self.model.session_or_telegram_id, self.model.name)
+        if not user.session_or_telegram_id or user.session_or_telegram_id.strip() == "":
+            raise HTTPException(
+                status_code=400, detail="session_or_telegram_id is required"
             )
+        async with self.db.db_session() as session:
+            query = insert(self.model).values(**user.model_dump()).returning(self.model)
 
             try:
                 result = await session.execute(query)
-
+                created_user = result.scalar_one()
             except IntegrityError:
                 await session.rollback()
                 raise HTTPException(status_code=400, detail="User already exists.")
 
             await session.commit()
-        row = result.fetchone()  # Теперь работает
-        session_id, name = row
-        return session_id, name
+            return created_user
+
+    async def get_user_by_session_or_telegram_id(self, session_or_telegram_id: str):
+        async with self.db.db_session() as session:
+            query = select(self.model).where(
+                self.model.session_or_telegram_id == session_or_telegram_id
+            )
+            result = await session.execute(query)
+            return result.scalar_one_or_none()

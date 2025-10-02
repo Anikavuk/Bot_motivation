@@ -5,10 +5,12 @@
     <title>Сохранение пользователя</title>
   </head>
   <body>
-    <h1>Приятно познакомиться, {name}!</h1>
+    <h1>Приятно познакомиться, {{name}}!</h1>
 
     <div class="button-row">
       <form method="post" action="/get_prediction">
+        <input type="hidden" name="name" value="{{ name }}" />
+        <input type="hidden" name="session_uuid" value="{{ id }}" />
         <button type="submit" class="btn btn-primary">
           Получить предсказание
         </button>
