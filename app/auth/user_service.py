@@ -1,6 +1,6 @@
 from fastapi import Depends, HTTPException
 from sqlalchemy import insert, select
-from sqlalchemy.exc import IntegrityError
+from sqlalchemy.exc import IntegrityError, OperationalError, DBAPIError
 
 from app.auth.schemas import CreateUser
 from app.core.db_dependency import DBDependency
@@ -28,21 +28,29 @@ class UserService:
 
         :param user: Объект с данными для создания пользователя.
         :type user: CreateUser
-        :raises HTTPException: Если пользователь уже существует.
-        :return created_user: Объект User
-        """
-        async with self.db.db_session() as session:
-            query = insert(self.model).values(**user.model_dump()).returning(self.model)
 
-            try:
+        :raises HTTPException: Если пользователь уже существует.
+        :raises HTTPException: Если база данных недоступна.
+
+        :return: Объект User, созданный в базе данных.
+        :rtype: User
+        """
+        try:
+            async with self.db.db_session() as session:
+                query = (
+                    insert(self.model).values(**user.model_dump()).returning(self.model)
+                )
                 result = await session.execute(query)
                 created_user = result.scalar_one()
-            except IntegrityError:
-                await session.rollback()
-                raise HTTPException(status_code=400, detail="User already exists.")
-
-            await session.commit()
-            return created_user
+                await session.commit()
+                return created_user
+        except IntegrityError:
+            raise HTTPException(status_code=400, detail="User already exists.")
+        except (OperationalError, DBAPIError, ConnectionRefusedError):
+            raise HTTPException(
+                status_code=503,
+                detail="Database is not available. Please try again later.",
+            )
 
     async def get_user_by_uuid(self, uuid: str) -> User | None:
         """

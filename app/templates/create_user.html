@@ -1,53 +1,54 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <title>Создать аккаунт</title>
     <style>
       .button-row {
         display: flex;
-        gap: 20px; /* расстояние между кнопками */
+        gap: 20px;
         align-items: center;
-        margin-top: 15px; /* отступ сверху, отделяющий кнопки от поля */
-      }
-
-      form {
-        margin: 0;
+        margin-top: 15px;
       }
 
       .form-group {
-        margin-bottom: 15px; /* отступ снизу у лейбла и инпута */
+        margin-bottom: 15px;
       }
 
       label {
-        margin-right: 10px; /* отступ справа у лейбла */
+        margin-right: 10px;
+      }
+
+      /* Простые стили для кнопок (опционально) */
+      .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+        cursor: pointer;
       }
     </style>
   </head>
   <body>
-    <h1>Привет, еще раз!</h1>
-    <p>Напиши свое имя, чтобы получать приятное предсказание!</p>
+    <h1>Привет, ещё раз!</h1>
+    <p>Напиши своё имя, чтобы получать приятное предсказание!</p>
 
+    <!-- Форма для сохранения -->
     <form method="post" action="/save_user">
       <div class="form-group">
         <label for="name">Имя:</label>
         <input type="text" id="name" name="name" required />
       </div>
-      <input
-        type="hidden"
-        id="session_uuid"
-        name="session_uuid"
-        value="{{ id }}"
-      />
+      <input type="hidden" name="session_uuid" value="{{ id }}" />
 
       <div class="button-row">
-        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <button type="submit" class="btn">Сохранить</button>
+
+        <!-- Кнопка "Получить предсказание" без сохранения -->
         <button
           type="submit"
           formaction="/get_prediction"
           formmethod="post"
-          class="btn btn-primary"
           formnovalidate
+          class="btn"
         >
           Получить предсказание
         </button>

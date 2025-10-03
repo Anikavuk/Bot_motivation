@@ -41,13 +41,12 @@ class PredictionService:
 
             try:
                 await session.execute(query)
+                await session.commit()
             except OperationalError:
                 await session.rollback()
                 raise HTTPException(
                     status_code=503, detail="Database is not available."
                 )
-
-                await session.commit()
 
     async def get_prediction_for_user(self, id: int) -> Prediction | None:
         """

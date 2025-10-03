@@ -1,5 +1,5 @@
 import datetime
-
+from typing import Optional
 from pydantic import BaseModel, Field
 
 
@@ -11,8 +11,8 @@ class CreateUser(BaseModel):
         uuid: Str идентификатор пользователя, хранит строковое значение Telegram ID или UUID сесиии
     """
 
-    name: str = Field(
-        default=None, min_length=3, max_length=10, description="Имя пользователя"
+    name: Optional[str] = Field(
+        default=None, max_length=10, description="Имя пользователя, может отсутствовать"
     )
     uuid: str = Field(..., description="ID telegram or UUID")
 
