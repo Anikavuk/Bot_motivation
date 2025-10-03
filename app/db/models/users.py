@@ -21,7 +21,7 @@ class User(Base):
     date_prediction: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=True
     )
-    session_or_telegram_id: Mapped[str] = mapped_column(Text, nullable=False)
+    uuid: Mapped[str] = mapped_column(Text, unique=True, nullable=False)
     prediction = relationship(
         "Prediction", back_populates="user", cascade="all, delete-orphan"
     )

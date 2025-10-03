@@ -37,7 +37,7 @@ async def save_user(
     service: UserService = Depends(UserService),
 ):
     """Метод загрузки страницы сохранения пользователя"""
-    user_data = CreateUser(name=name, session_or_telegram_id=session_uuid)
+    user_data = CreateUser(name=name, uuid=session_uuid)
     await service.create_user(user=user_data)
     return templates.TemplateResponse(
         "save_user.html", {"request": request, "name": name, "id": session_uuid}
@@ -53,11 +53,9 @@ async def get_prediction(
     prediction_service: PredictionService = Depends(PredictionService),
 ):
     """Метод загрузки страницы с предсказанием"""
-    user = await user_service.get_user_by_session_or_telegram_id(session_uuid)
+    user = await user_service.get_user_by_uuid(session_uuid)
     if not user:
-        user = await user_service.create_user(
-            CreateUser(name=name, session_or_telegram_id=session_uuid)
-        )
+        user = await user_service.create_user(CreateUser(name=name, uuid=session_uuid))
 
     prediction = await prediction_service.get_prediction_for_user(user.id)
 
@@ -77,9 +75,6 @@ async def get_prediction(
             "id": session_uuid,
         },
     )
-    # return templates.TemplateResponse(
-    #         "get.html",
-    #         {"request": request, "user": user})
 
 
 @router.post("/questions", response_class=HTMLResponse)

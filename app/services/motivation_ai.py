@@ -6,8 +6,8 @@ class HuggingFacePredictor:
     """
     Класс для генерации мотивационных предсказаний с использованием Hugging Face.
 
-    Атрибуты:
-        _PROVIDER (str): Название провайдера инференса (по умолчанию "cerebras").
+    Attributes:
+        _PROVIDER (str): Название провайдера инференса ("cerebras").
         _PROMPT (List[Dict[str, str]]): Список сообщений с запросом для модели.
         _MODEL_NAME (str): Имя модели для генерации текста.
     """
@@ -20,7 +20,8 @@ class HuggingFacePredictor:
                 "Дай предсказание на русском языке с поддержкой и мотивацией, "
                 "используя добрые и ласковые слова, с саркастическим юмором. "
                 "Сообщение должно быть очень коротким — не больше одного предложения."
-                "Твои ответы не должны повторяться"
+                "Твои ответы не должны повторяться, используй нейтральные или женские \n"
+                " ласковые обращения: лапочка, солнышко, зайка. "
             ),
         }
     ]
@@ -30,7 +31,9 @@ class HuggingFacePredictor:
     def __init__(self, token_env_var: str = "HF_TOKEN") -> None:
         """
         Инициализация клиента Hugging Face.
-        token_env_var (str): Имя переменной окружения с API токеном
+        :param token_env_var: Имя переменной окружения с API токеном
+        :type token_env_var: Str
+        :return None
         """
         api_key = settings.hf_settings.hf_token.get_secret_value()
         if not api_key:
@@ -46,8 +49,7 @@ class HuggingFacePredictor:
     def get_prediction(self) -> str:
         """
         Генерирует мотивационное предсказание с помощью модели.
-        Returns:
-            str: Текст ответа модели
+        :return Str: Текст ответа модели
         """
         completion = self.client.chat.completions.create(
             model=self._MODEL_NAME,

@@ -3,7 +3,6 @@ from sqlalchemy import insert, select
 from sqlalchemy.exc import IntegrityError
 
 from app.auth.schemas import CreateUser
-
 from app.core.db_dependency import DBDependency
 from app.db.models import User
 
@@ -16,25 +15,22 @@ class UserService:
     def __init__(self, db: DBDependency = Depends(DBDependency)) -> None:
         """
         Инициализирует экземпляр класса.
-
-        :param db: Зависимость для базы данных. По умолчанию используется Depends(DBDependency).
-        :type db: DBDependency
+        Attributes:
+            :param db: Зависимость для базы данных. По умолчанию используется Depends(DBDependency).
+            :type db: DBDependency
         """
         self.db = db
         self.model = User
 
-    async def create_user(self, user: CreateUser) -> None:
+    async def create_user(self, user: CreateUser) -> User:
         """
         Создает нового пользователя в базе данных.
 
         :param user: Объект с данными для создания пользователя.
         :type user: CreateUser
         :raises HTTPException: Если пользователь уже существует.
+        :return created_user: Объект User
         """
-        if not user.session_or_telegram_id or user.session_or_telegram_id.strip() == "":
-            raise HTTPException(
-                status_code=400, detail="session_or_telegram_id is required"
-            )
         async with self.db.db_session() as session:
             query = insert(self.model).values(**user.model_dump()).returning(self.model)
 
@@ -48,10 +44,15 @@ class UserService:
             await session.commit()
             return created_user
 
-    async def get_user_by_session_or_telegram_id(self, session_or_telegram_id: str):
+    async def get_user_by_uuid(self, uuid: str) -> User | None:
+        """
+        Метод поиска пользователя по UUID.
+
+        :param uuid: Идентификатор пользователя (Telegram ID или UUID сесиии)
+        :type uuid: Str
+        :return User | None: Объект пользователя, если найден, иначе None.
+        """
         async with self.db.db_session() as session:
-            query = select(self.model).where(
-                self.model.session_or_telegram_id == session_or_telegram_id
-            )
+            query = select(self.model).where(self.model.uuid == uuid)
             result = await session.execute(query)
             return result.scalar_one_or_none()
