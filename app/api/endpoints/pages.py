@@ -1,4 +1,5 @@
 import uuid
+from app.core.logger import Logger
 from typing import Optional
 from fastapi import APIRouter, Depends, Request, HTTPException
 from fastapi import Form
@@ -9,6 +10,9 @@ from app.auth.schemas import CreateUser
 from app.auth.user_service import UserService
 from app.services.prediction_service import PredictionService
 from app.services.motivation_ai import HuggingFacePredictor
+
+logger_factory = Logger(mode="dev")
+logger = logger_factory.get_logger(__name__)
 
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
@@ -45,10 +49,14 @@ async def save_user(
     try:
         user_data = CreateUser(name=name, uuid=session_uuid)
         await service.create_user(user=user_data)
+        logger.info(f"Пользователь создан: name={name}, uuid={session_uuid}")
         return templates.TemplateResponse(
             "save_user.html", {"request": request, "name": name, "id": session_uuid}
         )
     except HTTPException as e:
+        logger.warning(
+            f"Ошибка при создании пользователя: {e.detail} (uuid={session_uuid})"
+        )
         return templates.TemplateResponse(
             "errors.html",
             {"request": request, "error": e.detail},
@@ -71,6 +79,7 @@ async def get_prediction(
             user = await user_service.create_user(
                 CreateUser(name=name, uuid=session_uuid)
             )
+            logger.info(f"Пользователь создан: name={name}, uuid={session_uuid}")
 
         prediction = await prediction_service.get_prediction_for_user(user.id)
 
@@ -80,6 +89,9 @@ async def get_prediction(
             predictor = HuggingFacePredictor()
             response_text = predictor.get_prediction()
             await prediction_service.save_prediction_in_db(response_text, user.id)
+            logger.info(
+                f"Предсказание для пользователя user.id={user.id}  name={user.name}, uuid={session_uuid} сохранено"
+            )
 
         return templates.TemplateResponse(
             "get_prediction.html",
@@ -91,14 +103,11 @@ async def get_prediction(
             },
         )
     except HTTPException as e:
+        logger.warning(
+            f"Ошибка при загрузке страницы с предсказанием: {e.detail} (uuid={session_uuid})"
+        )
         return templates.TemplateResponse(
             "errors.html",
             {"request": request, "error": e.detail},
             status_code=e.status_code,
         )
-
-
-@router.post("/questions", response_class=HTMLResponse)
-def questions(request: Request):
-    """Метод загрузки анкеты пользователя"""
-    return templates.TemplateResponse("questions.html", {"request": request})

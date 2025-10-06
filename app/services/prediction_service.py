@@ -1,5 +1,7 @@
+from datetime import datetime, UTC
+
 from fastapi import Depends, HTTPException
-from sqlalchemy import select, insert
+from sqlalchemy import select, insert, update
 from sqlalchemy.exc import OperationalError
 
 from app.core.db_dependency import DBDependency
@@ -28,19 +30,25 @@ class PredictionService:
         Создает новое предсказание в базе данных.
 
         :param main_prediction: Предсказание, которое сохраняется в базе данных.
-        :type main_prediction: HuggingFacePredictor
+        :type main_prediction: Str
         :param user_id: ID Пользователя, объект модели User.
         :type user_id: Int
         :return None
         """
 
         async with self.db.db_session() as session:
-            query = insert(self.prediction_model).values(
-                main_prediction=main_prediction, user_id=user_id
-            )
-
             try:
+                query = insert(self.prediction_model).values(
+                    main_prediction=main_prediction, user_id=user_id
+                )
+                update_query = (
+                    update(self.user_model)
+                    .where(self.user_model.id == user_id)
+                    .values(date_prediction=datetime.now(UTC))
+                )
+
                 await session.execute(query)
+                await session.execute(update_query)
                 await session.commit()
             except OperationalError:
                 await session.rollback()
