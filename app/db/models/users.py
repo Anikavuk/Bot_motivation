@@ -16,8 +16,6 @@ class User(Base):
         Integer, autoincrement=True, primary_key=True, unique=True, nullable=False
     )
     name: Mapped[str] = mapped_column(Text, nullable=True)
-    zodiac_sign: Mapped[str] = mapped_column(Text, nullable=True)
-    birthday: Mapped[datetime] = mapped_column(DateTime, nullable=True)
     date_prediction: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=True
     )
