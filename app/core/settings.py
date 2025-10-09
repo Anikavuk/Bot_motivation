@@ -13,7 +13,7 @@ class DBSettings(BaseSettings):
     db_echo: bool
 
     model_config = SettingsConfigDict(
-        env_file=".env", env_file_encoding="utf8", extra="ignore", env_prefix="DB_"
+        env_file=".env", env_file_encoding="utf8", extra="ignore"
     )
 
     @property
@@ -25,7 +25,15 @@ class HuggingFaceSettings(BaseSettings):
     hf_token: SecretStr
 
     model_config = SettingsConfigDict(
-        env_file=".env", env_file_encoding="utf8", extra="ignore", env_prefix="DB_"
+        env_file=".env", env_file_encoding="utf8", extra="ignore"
+    )
+
+
+class BotSettings(BaseSettings):
+    bot_token: SecretStr
+    admin_id: int
+    model_config = SettingsConfigDict(
+        env_file=".env", env_file_encoding="utf8", extra="ignore"
     )
 
 
@@ -34,9 +42,10 @@ class Settings(BaseSettings):
 
     db_settings: DBSettings = DBSettings()
     hf_settings: HuggingFaceSettings = HuggingFaceSettings()
+    bot_settings: BotSettings = BotSettings()
 
     model_config = SettingsConfigDict(
-        env_file=".env", env_file_encoding="utf8", extra="ignore", env_prefix="DB_"
+        env_file=".env", env_file_encoding="utf8", extra="ignore"
     )
 
 

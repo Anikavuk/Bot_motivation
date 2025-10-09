@@ -2,7 +2,8 @@ from aiogram import Bot
 from aiogram.types import BotCommand, BotCommandScopeDefault
 
 
-async def set_commands(bot: Bot):
+async def set_commands(bot: Bot) -> None:
+    """Метод прописывает команды в меню бота"""
     commands = [
         BotCommand(command="start", description="Начало работы"),
         BotCommand(command="get_prediction", description="Получить предсказание"),

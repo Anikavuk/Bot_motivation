@@ -1,10 +1,11 @@
-import uvicorn
-from fastapi import FastAPI
-from app.api.endpoints import pages
+from app.core.config_run import run_app
+from app.core.logger import Logger
 
-app = FastAPI()
-app.include_router(pages.router)
+logger_factory = Logger(mode="dev")
+logger = logger_factory.get_logger(__name__)
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8080)
+    logger.info("Starting...")
+    run_app()
+    logger.info("Stopping...")
