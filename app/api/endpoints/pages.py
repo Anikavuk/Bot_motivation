@@ -71,6 +71,7 @@ async def get_prediction(
     session_uuid: str = Form(...),
     user_service: UserService = Depends(UserService),
     prediction_service: PredictionService = Depends(PredictionService),
+    timezone: str = Form(...),
 ):
     """Метод загрузки страницы с предсказанием"""
     try:
@@ -88,7 +89,9 @@ async def get_prediction(
         else:
             predictor = HuggingFacePredictor()
             response_text = predictor.get_prediction()
-            await prediction_service.save_prediction_in_db(response_text, user.id)
+            await prediction_service.save_prediction_in_db(
+                response_text, user.id, timezone
+            )
             logger.info(
                 f"Предсказание для пользователя user.id={user.id}  name={user.name}, uuid={session_uuid} сохранено"
             )

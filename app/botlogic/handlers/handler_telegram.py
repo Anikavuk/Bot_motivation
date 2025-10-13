@@ -51,7 +51,7 @@ async def bot_get_prediction(message: Message) -> None:
     telegram_user_id = str(message.from_user.id)
     name = message.from_user.full_name
     logger.info(
-        f"Пользователь пришел с телеграма: telegram_user_id={telegram_user_id}  name={name}"
+        f"Пользователь с телеграмма: telegram_user_id={telegram_user_id}  name={name}"
     )
     user_service = UserService(db=db_dependency)
     prediction_service = PredictionService(db=db_dependency)

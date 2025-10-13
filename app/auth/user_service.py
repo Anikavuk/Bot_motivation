@@ -5,6 +5,7 @@ from sqlalchemy.exc import IntegrityError, OperationalError, DBAPIError
 from app.auth.schemas import CreateUser
 from app.core.db_dependency import DBDependency
 from app.db.models import User
+from typing import List
 
 
 class UserService:
@@ -64,3 +65,14 @@ class UserService:
             query = select(self.model).where(self.model.uuid == uuid)
             result = await session.execute(query)
             return result.scalar_one_or_none()
+
+    async def get_all_users(self) -> List[User]:
+        """
+        Метод выгрузки всех пользователей с датами
+        :return: Список пользователей.
+        """
+        async with self.db.db_session() as session:
+            query = select(self.model)
+            result = await session.execute(query)
+            users = result.scalars().all()
+            return users
