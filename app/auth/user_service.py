@@ -1,11 +1,12 @@
+from datetime import date
+
 from fastapi import Depends, HTTPException
-from sqlalchemy import insert, select
+from sqlalchemy import insert, select, update
 from sqlalchemy.exc import IntegrityError, OperationalError, DBAPIError
 
 from app.auth.schemas import CreateUser
 from app.core.db_dependency import DBDependency
 from app.db.models import User
-from typing import List
 
 
 class UserService:
@@ -66,13 +67,32 @@ class UserService:
             result = await session.execute(query)
             return result.scalar_one_or_none()
 
-    async def get_all_users(self) -> List[User]:
-        """
-        Метод выгрузки всех пользователей с датами
-        :return: Список пользователей.
+    async def update_user_name(self, user_id: int, new_name: str) -> None:
+        """Метод добавления имени пользователя
+        :param user_id: ID пользователя
+        :type uuid: int
+        :param new_name: новое имя пользователя
+        :type new_name: str
+        :return None
         """
         async with self.db.db_session() as session:
-            query = select(self.model)
+            query = (
+                update(self.model).where(self.model.id == user_id).values(name=new_name)
+            )
+            await session.execute(query)
+            await session.commit()
+
+    async def get_date_prediction(self, uuid: str) -> date | None:
+        """Метод выгружает дату предсказания по uuid пользователя
+        :param uuid: Идентификатор пользователя (Telegram ID или UUID сесиии)
+        :type uuid: Str
+        :return date_prediction | None: Дата предсказания, если есть в базе данных, иначе None.
+        """
+        async with self.db.db_session() as session:
+            query = (
+                select(self.model.date_prediction)
+                .where(self.model.uuid == uuid)
+                .limit(1)
+            )
             result = await session.execute(query)
-            users = result.scalars().all()
-            return users
+            return result.scalar_one_or_none()

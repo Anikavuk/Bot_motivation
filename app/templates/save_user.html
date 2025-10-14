@@ -6,7 +6,7 @@
   </head>
   <body>
     {% if name and name.strip() %}
-    <h1>Приятно познакомиться, {{ name }}!</h1>
+    <h1>Приятно познакомиться, {{name}}!</h1>
     {% else %}
     <h1></h1>
     {% endif %}
@@ -15,36 +15,10 @@
       <form id="prediction-form" method="post" action="/get_prediction">
         <input type="hidden" name="name" value="{{ name or '' }}" />
         <input type="hidden" name="session_uuid" value="{{ id or '' }}" />
-
-        <!-- Скрытые поля для времени и зоны -->
-        <input type="hidden" name="date_prediction" id="date_prediction" />
-        <input type="hidden" name="timezone" id="timezone" />
-
         <button type="submit" class="btn btn-primary">
           Получить предсказание
         </button>
       </form>
     </div>
-
-    <script>
-      // При загрузке страницы или перед отправкой формы запишем значения времени и зоны
-
-      const localDateTime = new Date().toISOString(); // Текущее время в UTC ISO формате
-      const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone; // Временная зона пользователя
-
-      // Присваиваем значения скрытым полям формы
-      document.getElementById("date_prediction").value = localDateTime;
-      document.getElementById("timezone").value = userTimeZone;
-
-      // При необходимости можно обновить эти значения перед отправкой формы
-      document
-        .getElementById("prediction-form")
-        .addEventListener("submit", () => {
-          document.getElementById("date_prediction").value =
-            new Date().toISOString();
-          document.getElementById("timezone").value =
-            Intl.DateTimeFormat().resolvedOptions().timeZone;
-        });
-    </script>
   </body>
 </html>

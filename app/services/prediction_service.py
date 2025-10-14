@@ -1,7 +1,6 @@
 from datetime import timezone as dt_timezone, datetime
-from zoneinfo import ZoneInfo
 from fastapi import Depends, HTTPException
-from sqlalchemy import select, insert, update, delete
+from sqlalchemy import select, insert, update
 from sqlalchemy.exc import OperationalError
 
 from app.core.db_dependency import DBDependency
@@ -30,9 +29,7 @@ class PredictionService:
         self.user_model = User
         self.prediction_model = Prediction
 
-    async def save_prediction_in_db(
-        self, main_prediction: str, user_id: int, timezone: str
-    ) -> None:
+    async def save_prediction_in_db(self, main_prediction: str, user_id: int) -> None:
         """
         Создает новое предсказание в базе данных.
 
@@ -40,13 +37,8 @@ class PredictionService:
         :type main_prediction: Str
         :param user_id: ID Пользователя, объект модели User.
         :type user_id: Int
-        :param timezone: Таймзона пользователя
-        :type timezone: Str
         :return None
         """
-        user_tz = str(ZoneInfo(timezone))
-        logger.info(f"Пользователь user_id={user_id} находится в тайм зоне {user_tz}")
-
         async with self.db.db_session() as session:
             try:
                 query = insert(self.prediction_model).values(
@@ -57,13 +49,13 @@ class PredictionService:
                     .where(self.user_model.id == user_id)
                     .values(
                         date_prediction=datetime.now(dt_timezone.utc),
-                        user_timezone=user_tz,
                     )
                 )
 
                 await session.execute(query)
                 await session.execute(update_query)
                 await session.commit()
+                logger.info(f"Пользователь user_id={user_id} сохранен")
             except OperationalError:
                 await session.rollback()
                 raise HTTPException(
@@ -87,12 +79,3 @@ class PredictionService:
             )
             result = await session.execute(query)
             return result.scalar_one_or_none()
-
-    async def deleted_prediction(self, user_id) -> None:
-        """Метод удаления предсказания по user_id"""
-        async with self.db.db_session() as session:
-            query = delete(self.prediction_model).where(
-                self.prediction_model.user_id == user_id
-            )
-            await session.execute(query)
-            await session.commit()
