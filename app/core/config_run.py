@@ -32,9 +32,11 @@ async def register_bot_routers() -> None:
     dispatcher.include_router(handlers_router)
 
 
+web_app = FastAPI(lifespan=dev_lifespan)
+web_app.include_router(router)
+
+
 def run_app():
-    web_app = FastAPI(lifespan=dev_lifespan)
-    web_app.include_router(router)
     asyncio.run(register_bot_routers())
     uvicorn.run(
         web_app,

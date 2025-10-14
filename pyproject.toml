@@ -18,5 +18,6 @@ dependencies = [
     "python-multipart>=0.0.20",
     "aiogram>=3.22.0",
     "pytz>=2025.2",
-    "tzdata>=2025.2",
+    "pytest>=8.4.2",
+
 ]
