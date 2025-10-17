@@ -19,5 +19,6 @@ dependencies = [
     "aiogram>=3.22.0",
     "pytz>=2025.2",
     "pytest>=8.4.2",
+    "httpx>=0.28.1",
 
 ]

@@ -27,7 +27,7 @@ def index(request: Request):
     if not session_uuid:
         session_uuid = str(uuid.uuid4())
     response = templates.TemplateResponse(
-        "index.html", {"request": request, "id": session_uuid}
+        request=request, name="index.html", context={"id": session_uuid}
     )
     response.set_cookie(
         key="session_id",
@@ -50,7 +50,7 @@ def create_user(
     """Метод загрузки страницы создания пользователя"""
     final_uuid = session_uuid or request.cookies.get("session_id") or str(uuid.uuid4())
     response = templates.TemplateResponse(
-        "create_user.html", {"request": request, "id": final_uuid}
+        request=request, name="create_user.html", context={"id": final_uuid}
     )
     response.set_cookie(
         key="session_id",
@@ -84,7 +84,9 @@ async def save_user(
             await service.create_user(user=user_data)
             logger.info(f"Пользователь создан: name={name}, uuid={session_uuid}")
         response = templates.TemplateResponse(
-            "save_user.html", {"request": request, "name": name, "id": session_uuid}
+            request=request,
+            name="save_user.html",
+            context={"name": name, "id": session_uuid},
         )
         response.set_cookie(
             key="session_id",
@@ -101,8 +103,9 @@ async def save_user(
             f"Ошибка при создании пользователя: {e.detail} (uuid={session_uuid})"
         )
         return templates.TemplateResponse(
-            "errors.html",
-            {"request": request, "error": e.detail},
+            request=request,
+            name="errors.html",
+            context={"error": e.detail},
             status_code=e.status_code,
         )
 
@@ -143,9 +146,9 @@ async def get_prediction(
             )
 
         response = templates.TemplateResponse(
-            "get_prediction.html",
-            {
-                "request": request,
+            request=request,
+            name="get_prediction.html",
+            context={
                 "prediction": response_text,
                 "name": name,
                 "id": session_uuid,
@@ -165,7 +168,8 @@ async def get_prediction(
             f"Ошибка при загрузке страницы с предсказанием: {e.detail} (uuid={session_uuid})"
         )
         return templates.TemplateResponse(
-            "errors.html",
-            {"request": request, "error": e.detail},
+            request=request,
+            name="errors.html",
+            context={"error": e.detail},
             status_code=e.status_code,
         )
