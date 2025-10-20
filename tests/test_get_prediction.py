@@ -1,17 +1,17 @@
 from unittest.mock import patch
 import pytest
 from httpx import AsyncClient, ASGITransport
+from app.core.config_run import web_app
+
 
 from app.services.motivation_ai import HuggingFacePredictor
 
 
-#
 @pytest.mark.asyncio
 async def test_get_prediction_creates_user_and_new_prediction(
     mock_user_service, mock_prediction_service
 ):
     """Если пользователя нет — создаётся новый, и генерируется новое предсказание"""
-    from app.core.config_run import web_app
 
     name = "Анна"
     session_uuid = "test-uuid-123"
