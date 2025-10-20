@@ -25,19 +25,12 @@ async def dev_lifespan(app: FastAPI):
     await bot.session.close()
 
 
-async def register_bot_routers() -> None:
-    """
-    Регистрирует маршрутизаторы ботов у диспетчера приложений.
-    """
-    dispatcher.include_router(handlers_router)
-
-
 web_app = FastAPI(lifespan=dev_lifespan)
 web_app.include_router(router)
 
 
 def run_app():
-    asyncio.run(register_bot_routers())
+    dispatcher.include_router(handlers_router)
     uvicorn.run(
         web_app,
         host="127.0.0.1",
