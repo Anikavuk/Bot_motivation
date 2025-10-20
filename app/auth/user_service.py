@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import datetime
 
 from fastapi import Depends, HTTPException
 from sqlalchemy import insert, select, update
@@ -82,7 +82,7 @@ class UserService:
             await session.execute(query)
             await session.commit()
 
-    async def get_date_prediction(self, uuid: str) -> date | None:
+    async def get_date_prediction(self, uuid: str) -> datetime | None:
         """Метод выгружает дату предсказания по uuid пользователя
         :param uuid: Идентификатор пользователя (Telegram ID или UUID сесиии)
         :type uuid: Str

@@ -9,14 +9,14 @@ from app.auth.schemas import CreateUser
 from app.auth.user_service import UserService
 from app.core.db_dependency import DBDependency
 from app.core.logger import Logger
-from app.core.settings import settings
+from app.core.settings import get_settings
 from app.services.motivation_ai import HuggingFacePredictor
 from app.services.prediction_service import PredictionService
 
 logger_factory = Logger(mode="dev")
 logger = logger_factory.get_logger(__name__)
 
-bot: Bot = Bot(token=settings.bot_settings.bot_token.get_secret_value())
+bot: Bot = Bot(token=get_settings().bot_settings.bot_token.get_secret_value())
 dispatcher: Dispatcher = Dispatcher()
 main_router: Router = Router()
 db_dependency: DBDependency = DBDependency()

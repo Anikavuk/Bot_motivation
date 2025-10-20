@@ -1,6 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
-from app.core.settings import settings
+from app.core.settings import get_settings
 
 
 class DBDependency:
@@ -12,6 +12,7 @@ class DBDependency:
         """
         Инициализирует экземпляр класса, отвечающего за взаимодействие с асинхронной базой данных.
         """
+        settings = get_settings()
         self._engine = create_async_engine(
             url=settings.db_settings.db_url, echo=settings.db_settings.db_echo
         )

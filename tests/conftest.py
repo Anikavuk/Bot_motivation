@@ -9,16 +9,19 @@ from tests.fake_settings import fake_settings
 
 @pytest.fixture(autouse=True)
 def patch_settings(monkeypatch):
-    monkeypatch.setattr("app.core.settings.settings", fake_settings)
+    def mock_get_settings():
+        return fake_settings
+
+    monkeypatch.setattr("app.core.settings.get_settings", mock_get_settings)
 
 
 @pytest.fixture()
-def mock_user_service(monkeypatch):
+def mock_user_service():
     user_service = AsyncMock()
     user_service.get_user_by_uuid = AsyncMock(return_value=None)
     user_service.create_user = AsyncMock()
     user_service.update_user_name = AsyncMock()
-    user_service.get_date_prediction = AsyncMock()
+    user_service.get_date_prediction = AsyncMock(return_value=None)
     return user_service
 
 

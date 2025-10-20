@@ -1,5 +1,5 @@
 from huggingface_hub import InferenceClient
-from app.core.settings import settings
+from app.core.settings import get_settings
 
 
 class HuggingFacePredictor:
@@ -36,7 +36,7 @@ class HuggingFacePredictor:
         :type token_env_var: Str
         :return None
         """
-        api_key = settings.hf_settings.hf_token.get_secret_value()
+        api_key = get_settings().hf_settings.hf_token.get_secret_value()
         if not api_key:
             raise ValueError(
                 f"API token '{token_env_var}' не найден в переменных окружения"

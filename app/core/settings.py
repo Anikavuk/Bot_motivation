@@ -40,16 +40,22 @@ class BotSettings(BaseSettings):
 class Settings(BaseSettings):
     """Класс для хранения настроек приложения."""
 
-    db_settings: DBSettings = DBSettings()
-    hf_settings: HuggingFaceSettings = HuggingFaceSettings()
-    bot_settings: BotSettings = BotSettings()
+    db_settings: DBSettings
+    hf_settings: HuggingFaceSettings
+    bot_settings: BotSettings
 
     model_config = SettingsConfigDict(
         env_file=".env", env_file_encoding="utf8", extra="ignore"
     )
 
 
-# def get_settings():
-#     return Settings()
+def get_settings():
+    return Settings(
+        db_settings=DBSettings(),
+        hf_settings=HuggingFaceSettings(),
+        bot_settings=BotSettings(),
+    )
 
-settings = Settings()
+
+#
+# settings = Settings()
