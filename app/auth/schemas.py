@@ -11,6 +11,6 @@ class CreateUser(BaseModel):
     """
 
     name: Optional[str] = Field(
-        default=None, max_length=10, description="Имя пользователя, может отсутствовать"
+        default=None, max_length=50, description="Имя пользователя, может отсутствовать"
     )
     uuid: str = Field(..., description="ID telegram or UUID")
