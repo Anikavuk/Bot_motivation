@@ -50,6 +50,8 @@ async def test_get_prediction_creates_user_and_new_prediction(
     assert response.status_code == 200
     # assert session_uuid in response.text
     assert fake_prediction_text in response.text
+    assert "session_id=test-uuid-123" in response.headers.get("set-cookie", "")
+    assert "text/html" in response.headers.get("content-type", "")
 
     # Проверка вызовов
     mock_user_service.get_user_by_uuid.assert_awaited_once_with(session_uuid)
