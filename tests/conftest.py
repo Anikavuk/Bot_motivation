@@ -1,44 +1,40 @@
-from pydantic import SecretStr
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from unittest.mock import AsyncMock
+import pytest
+
+from app.auth.user_service import UserService
+from app.core.config_run import web_app
+from app.services.prediction_service import PredictionService
+from tests.fake_settings import fake_settings
 
 
-class FakeDBSettings(BaseSettings):
-    db_name: str = "test_db"
-    db_user: str = "test_user"
-    db_password: SecretStr = SecretStr("test_password")
-    db_host: str = "localhost"
-    db_port: int = 5432
-    db_echo: bool = False
-
-    model_config = SettingsConfigDict(extra="ignore")
-
-    @property
-    def db_url(self):
-        return f"postgresql+asyncpg://{self.db_user}:{self.db_password.get_secret_value()}@{self.db_host}:{self.db_port}/{self.db_name}"
+@pytest.fixture(autouse=True)
+def patch_settings(monkeypatch):
+    monkeypatch.setattr("app.core.settings.settings", fake_settings)
 
 
-# Фейковый класс для HuggingFaceSettings
-class FakeHuggingFaceSettings(BaseSettings):
-    hf_token: SecretStr = SecretStr("fake_hf_token")
-
-    model_config = SettingsConfigDict(extra="ignore")
-
-
-# Фейковый класс для BotSettings
-class FakeBotSettings(BaseSettings):
-    bot_token: SecretStr = SecretStr("fake_bot_token")
-    admin_id: int = 123456789
-
-    model_config = SettingsConfigDict(extra="ignore")
+@pytest.fixture()
+def mock_user_service(monkeypatch):
+    user_service = AsyncMock()
+    user_service.get_user_by_uuid = AsyncMock(return_value=None)
+    user_service.create_user = AsyncMock()
+    user_service.update_user_name = AsyncMock()
+    user_service.get_date_prediction = AsyncMock()
+    return user_service
 
 
-# Основной фейковый класс Settings
-class FakeSettings(BaseSettings):
-    db_settings: FakeDBSettings = FakeDBSettings()
-    hf_settings: FakeHuggingFaceSettings = FakeHuggingFaceSettings()
-    bot_settings: FakeBotSettings = FakeBotSettings()
+@pytest.fixture()
+def mock_prediction_service(monkeypatch):
+    service = AsyncMock()
+    service.get_prediction_for_user = AsyncMock(return_value=None)
+    service.save_prediction_in_db = AsyncMock()
+    return service
 
-    model_config = SettingsConfigDict(extra="ignore")
 
+@pytest.fixture()
+def override_dependency(mock_user_service, mock_prediction_service):
+    """Автоматически подменяет зависимости во всех тестах"""
+    web_app.dependency_overrides[UserService] = lambda: mock_user_service
+    web_app.dependency_overrides[PredictionService] = lambda: mock_prediction_service
 
-fake_settings = FakeSettings()
+    yield
+    web_app.dependency_overrides.clear()
