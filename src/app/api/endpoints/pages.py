@@ -1,5 +1,5 @@
 import uuid
-from app.core.logger import Logger
+from src.app.core.logger import get_logger
 from typing import Optional
 from fastapi import APIRouter, Depends, Request, HTTPException
 from fastapi import Form
@@ -7,13 +7,12 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from datetime import datetime, timezone
 
-from app.auth.schemas import CreateUser
-from app.auth.user_service import UserService
-from app.services.prediction_service import PredictionService
-from app.services.motivation_ai import HuggingFacePredictor
+from src.app.auth.schemas import CreateUser
+from src.app.auth.user_service import UserService
+from src.app.services.prediction_service import PredictionService
+from src.app.services.motivation_ai import HuggingFacePredictor
 
-logger_factory = Logger(mode="dev")
-logger = logger_factory.get_logger(__name__)
+logger = get_logger(name=__name__)
 
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")

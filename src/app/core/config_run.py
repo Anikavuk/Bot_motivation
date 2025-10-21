@@ -4,10 +4,10 @@ from contextlib import asynccontextmanager
 import uvicorn
 from fastapi import FastAPI
 
-from app.api.endpoints.pages import router
-from app.botlogic.commands import set_commands
-from app.botlogic.handlers import handlers_router
-from app.botlogic.handlers.handler_telegram import bot, dispatcher
+from src.app.api.endpoints.pages import router
+from src.app.botlogic.commands import set_commands
+from src.app.botlogic.handlers import handlers_router
+from src.app.botlogic.handlers.handler_telegram import bot, dispatcher
 
 
 @asynccontextmanager

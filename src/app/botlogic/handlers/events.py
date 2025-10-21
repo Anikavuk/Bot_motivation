@@ -1,6 +1,6 @@
-from app.botlogic.commands import set_commands
-from app.botlogic.handlers.handler_telegram import bot
-from app.core.settings import get_settings
+from src.app.botlogic.commands import set_commands
+from src.app.botlogic.handlers.handler_telegram import bot
+from src.app.core.settings import get_settings
 from aiogram import Router
 
 

@@ -2,7 +2,7 @@ from sqlalchemy import Text, Integer, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.orm import relationship
 
-from app.db.models import Base
+from src.app.db.models import Base
 
 
 class Prediction(Base):

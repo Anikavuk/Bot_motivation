@@ -104,3 +104,15 @@ class PlainFormatter(logging.Formatter):
         super().__init__(
             "%(asctime)s - %(name)s - %(levelname)s - %(pathname)s:%(lineno)d - %(funcName)s - %(message)s"
         )
+
+
+_logger_instance = Logger(mode="dev")
+
+
+def get_logger(name: str | None = None) -> logging.Logger:
+    if name is None:
+        name = __name__
+    return _logger_instance.get_logger(name)
+
+
+__all__ = ["Logger", "get_logger"]

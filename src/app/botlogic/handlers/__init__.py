@@ -1,7 +1,7 @@
 from aiogram import Router
 
-from app.botlogic.handlers.events import service_events_router
-from app.botlogic.handlers.handler_telegram import main_router
+from src.app.botlogic.handlers.events import service_events_router
+from src.app.botlogic.handlers.handler_telegram import main_router
 
 routes = [
     main_router,

@@ -3,14 +3,13 @@ from fastapi import Depends, HTTPException
 from sqlalchemy import select, insert, update
 from sqlalchemy.exc import OperationalError
 
-from app.core.db_dependency import DBDependency
-from app.db.models import User
-from app.db.models.prediction import Prediction
-from app.core.logger import Logger
+from src.app.core.db_dependency import DBDependency
+from src.app.db.models import User
+from src.app.db.models import Prediction
+from src.app.core.logger import get_logger
 
 
-logger_factory = Logger(mode="dev")
-logger = logger_factory.get_logger(__name__)
+logger = get_logger(name=__name__)
 
 
 class PredictionService:

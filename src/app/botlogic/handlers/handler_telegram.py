@@ -1,3 +1,5 @@
+from datetime import datetime, timezone
+
 from aiogram import Bot
 from aiogram import Dispatcher
 from aiogram.filters.command import Command
@@ -5,16 +7,15 @@ from aiogram.types import Message
 from aiogram import Router
 from fastapi import HTTPException
 
-from app.auth.schemas import CreateUser
-from app.auth.user_service import UserService
-from app.core.db_dependency import DBDependency
-from app.core.logger import Logger
-from app.core.settings import get_settings
-from app.services.motivation_ai import HuggingFacePredictor
-from app.services.prediction_service import PredictionService
+from src.app.auth.schemas import CreateUser
+from src.app.auth.user_service import UserService
+from src.app.core.db_dependency import DBDependency
+from src.app.core.logger import get_logger
+from src.app.core.settings import get_settings
+from src.app.services.motivation_ai import HuggingFacePredictor
+from src.app.services.prediction_service import PredictionService
 
-logger_factory = Logger(mode="dev")
-logger = logger_factory.get_logger(__name__)
+logger = get_logger(name=__name__)
 
 bot: Bot = Bot(token=get_settings().bot_settings.bot_token.get_secret_value())
 dispatcher: Dispatcher = Dispatcher()
@@ -63,9 +64,15 @@ async def bot_get_prediction(message: Message) -> None:
         )
         logger.info(f"Пользователь создан: name={name}, uuid={telegram_user_id}")
 
+    today_date = datetime.now(timezone.utc).date()
+    logger.info(f"Сегодняшняя дата {today_date}")
+    prediction_datetime = await user_service.get_date_prediction(telegram_user_id)
+    local_date = prediction_datetime.astimezone(timezone.utc).date()
+    logger.info(f"Дата с базы данных {prediction_datetime}")
+    logger.info(f"Преобразованная дата {local_date}")
     prediction = await prediction_service.get_prediction_for_user(user.id)
 
-    if prediction:
+    if prediction and local_date == today_date:
         response_text = prediction.main_prediction
     else:
         predictor = HuggingFacePredictor()

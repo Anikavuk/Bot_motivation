@@ -11,7 +11,7 @@ class Base(DeclarativeBase):
         """
         Определяет название таблицы в базе данных на основе имени класса.
 
-        :return: Название таблицы в формате snake_case.
+        :return: Название таблицы
         :rtype: Str
         """
         return cls.__name__.lower()
