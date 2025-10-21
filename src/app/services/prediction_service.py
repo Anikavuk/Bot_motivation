@@ -74,6 +74,7 @@ class PredictionService:
             query = (
                 select(self.prediction_model)
                 .where(self.prediction_model.user_id == id)
+                .order_by(self.prediction_model.id.desc())
                 .limit(1)
             )
             result = await session.execute(query)

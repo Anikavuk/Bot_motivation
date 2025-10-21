@@ -4563,3 +4563,300 @@ huggingface_hub.errors.HfHubHTTPError: 429 Client Error: Too Many Requests for u
 2025-10-21 14:06:15,534 - aiogram.dispatcher - WARNING - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:221 - _listen_updates - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7675393103)
 2025-10-21 14:06:15,785 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:395 - _polling - Polling stopped for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
 2025-10-21 14:06:16,037 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:10 - <module> - Stopping...
+2025-10-21 16:18:37,050 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:8 - <module> - Starting...
+2025-10-21 16:18:37,970 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:566 - start_polling - Start polling
+2025-10-21 16:18:38,104 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:363 - _polling - Run polling for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 16:18:38,230 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:54 - bot_get_prediction - Пользователь с телеграмма: telegram_user_id=175001709  name=Kawai Evil
+2025-10-21 16:18:38,235 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:54 - bot_get_prediction - Пользователь с телеграмма: telegram_user_id=500830579  name=Aндpeй
+2025-10-21 16:18:38,471 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:65 - bot_get_prediction - Пользователь создан: name=Kawai Evil, uuid=175001709
+2025-10-21 16:18:38,471 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:68 - bot_get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 16:18:38,474 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:65 - bot_get_prediction - Пользователь создан: name=Aндpeй, uuid=500830579
+2025-10-21 16:18:38,474 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:68 - bot_get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 16:18:38,479 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797555 is not handled. Duration 250 ms by bot id=7675393103
+2025-10-21 16:18:38,479 - aiogram.event - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:315 - _process_update - Cause exception while process update id=842797555 by bot id=7675393103
+AttributeError: 'NoneType' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\fsm\middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 166, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py", line 70, in bot_get_prediction
+    local_date = prediction_datetime.astimezone(timezone.utc).date()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'astimezone'
+2025-10-21 16:18:38,493 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797556 is not handled. Duration 250 ms by bot id=7675393103
+2025-10-21 16:18:38,493 - aiogram.event - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:315 - _process_update - Cause exception while process update id=842797556 by bot id=7675393103
+AttributeError: 'NoneType' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\fsm\middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 166, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py", line 70, in bot_get_prediction
+    local_date = prediction_datetime.astimezone(timezone.utc).date()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'astimezone'
+2025-10-21 16:18:54,169 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:54 - bot_get_prediction - Пользователь с телеграмма: telegram_user_id=1469740145  name=Usla
+2025-10-21 16:18:54,176 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:68 - bot_get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 16:18:54,181 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:71 - bot_get_prediction - Дата с базы данных 2025-10-21 09:04:50.231656+00:00
+2025-10-21 16:18:54,181 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:72 - bot_get_prediction - Преобразованная дата 2025-10-21
+2025-10-21 16:18:54,579 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797557 is handled. Duration 406 ms by bot id=7675393103
+2025-10-21 16:31:45,595 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:594 - start_polling - Polling stopped
+2025-10-21 16:31:45,606 - aiogram.dispatcher - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:219 - _listen_updates - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-10-21 16:31:45,606 - aiogram.dispatcher - WARNING - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:221 - _listen_updates - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7675393103)
+2025-10-21 16:31:45,877 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:395 - _polling - Polling stopped for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 16:31:46,129 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:10 - <module> - Stopping...
+2025-10-21 16:31:51,345 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:8 - <module> - Starting...
+2025-10-21 16:31:52,082 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:566 - start_polling - Start polling
+2025-10-21 16:31:52,196 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:363 - _polling - Run polling for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 16:32:07,521 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:54 - bot_get_prediction - Пользователь с телеграмма: telegram_user_id=1469740145  name=Usla
+2025-10-21 16:32:07,611 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:68 - bot_get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 16:32:07,619 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:77 - bot_get_prediction - Дата из БД: 2025-10-21 09:04:50.231656+00:00, преобразованная: 2025-10-21
+2025-10-21 16:32:08,111 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797558 is handled. Duration 594 ms by bot id=7675393103
+2025-10-21 16:40:40,038 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:594 - start_polling - Polling stopped
+2025-10-21 16:40:40,049 - aiogram.dispatcher - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:219 - _listen_updates - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-10-21 16:40:40,049 - aiogram.dispatcher - WARNING - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:221 - _listen_updates - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7675393103)
+2025-10-21 16:40:40,316 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:395 - _polling - Polling stopped for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 16:40:40,583 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:10 - <module> - Stopping...
+2025-10-21 16:45:14,345 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:8 - <module> - Starting...
+2025-10-21 16:45:15,127 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:566 - start_polling - Start polling
+2025-10-21 16:45:15,264 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:363 - _polling - Run polling for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 16:45:37,654 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:594 - start_polling - Polling stopped
+2025-10-21 16:45:37,664 - aiogram.dispatcher - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:219 - _listen_updates - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-10-21 16:45:37,664 - aiogram.dispatcher - WARNING - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:221 - _listen_updates - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7675393103)
+2025-10-21 16:45:37,918 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:395 - _polling - Polling stopped for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 16:45:38,182 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:10 - <module> - Stopping...
+2025-10-21 16:45:42,863 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:8 - <module> - Starting...
+2025-10-21 16:45:43,859 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:566 - start_polling - Start polling
+2025-10-21 16:45:43,999 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:363 - _polling - Run polling for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 16:45:52,549 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:70 - save_user - Пользователь обновлён: uuid=b6b926e7-ba7d-413c-9947-7f85c4e29e87,добавлено новое имя=Ванятка
+2025-10-21 16:45:54,440 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:122 - get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 16:45:54,446 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:125 - get_prediction - Дата с базы данных 2025-10-20 17:11:21.155968+00:00
+2025-10-21 16:45:54,447 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:126 - get_prediction - Преобразованная дата 2025-10-20
+2025-10-21 16:46:06,773 - src.app.services.prediction_service - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\services\prediction_service.py:57 - save_prediction_in_db - Пользователь user_id=147 сохранен
+2025-10-21 16:46:06,773 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:135 - get_prediction - Предсказание для пользователя user.id=147  name=Ванятка, uuid=b6b926e7-ba7d-413c-9947-7f85c4e29e87 сохранено
+2025-10-21 16:46:21,192 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:594 - start_polling - Polling stopped
+2025-10-21 16:46:21,201 - aiogram.dispatcher - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:219 - _listen_updates - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-10-21 16:46:21,201 - aiogram.dispatcher - WARNING - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:221 - _listen_updates - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7675393103)
+2025-10-21 16:46:21,469 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:395 - _polling - Polling stopped for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 16:46:21,722 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:10 - <module> - Stopping...
+2025-10-21 17:02:48,515 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:8 - <module> - Starting...
+2025-10-21 17:02:49,240 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:566 - start_polling - Start polling
+2025-10-21 17:02:49,369 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:363 - _polling - Run polling for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 17:03:35,288 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:75 - save_user - Пользователь создан: name=Dfyznrf 222, uuid=eb31c799-fc04-44d7-a3d0-189548d3605b
+2025-10-21 17:04:18,828 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:594 - start_polling - Polling stopped
+2025-10-21 17:04:18,841 - aiogram.dispatcher - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:219 - _listen_updates - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-10-21 17:04:18,842 - aiogram.dispatcher - WARNING - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:221 - _listen_updates - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7675393103)
+2025-10-21 17:04:19,092 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:395 - _polling - Polling stopped for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 17:04:19,356 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:10 - <module> - Stopping...
+2025-10-21 17:08:18,979 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:8 - <module> - Starting...
+2025-10-21 17:08:20,340 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:566 - start_polling - Start polling
+2025-10-21 17:08:20,461 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:363 - _polling - Run polling for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 17:08:27,046 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:119 - get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 17:16:22,701 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:594 - start_polling - Polling stopped
+2025-10-21 17:16:22,708 - aiogram.dispatcher - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:219 - _listen_updates - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-10-21 17:16:22,709 - aiogram.dispatcher - WARNING - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:221 - _listen_updates - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7675393103)
+2025-10-21 17:16:22,968 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:395 - _polling - Polling stopped for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 17:16:23,233 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:10 - <module> - Stopping...
+2025-10-21 17:16:27,649 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:8 - <module> - Starting...
+2025-10-21 17:16:28,415 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:566 - start_polling - Start polling
+2025-10-21 17:16:28,519 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:363 - _polling - Run polling for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 17:16:33,402 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:69 - save_user - Пользователь обновлён: uuid=eb31c799-fc04-44d7-a3d0-189548d3605b,добавлено новое имя=Dfyznrf 222
+2025-10-21 17:16:38,932 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:119 - get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 17:16:38,938 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:123 - get_prediction - Дата предсказания отсутствует — генерируем новое предсказание
+2025-10-21 17:16:41,277 - src.app.services.prediction_service - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\services\prediction_service.py:57 - save_prediction_in_db - Пользователь user_id=166 сохранен
+2025-10-21 17:16:41,277 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:139 - get_prediction - Предсказание для пользователя user.id=166  name=Dfyznrf 222, uuid=eb31c799-fc04-44d7-a3d0-189548d3605b сохранено
+2025-10-21 17:16:50,118 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:54 - bot_get_prediction - Пользователь с телеграмма: telegram_user_id=1469740145  name=Usla
+2025-10-21 17:16:50,199 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:68 - bot_get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 17:16:50,206 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:77 - bot_get_prediction - Дата из БД: 2025-10-21 09:04:50.231656+00:00, преобразованная: 2025-10-21
+2025-10-21 17:16:50,696 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797559 is handled. Duration 577 ms by bot id=7675393103
+2025-10-21 17:18:41,491 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:119 - get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 17:18:41,496 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:127 - get_prediction - Дата с базы данных 2025-10-21 12:16:41.259263+00:00
+2025-10-21 17:18:41,496 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:128 - get_prediction - Преобразованная дата 2025-10-21
+2025-10-21 17:19:11,106 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797560 is handled. Duration 172 ms by bot id=7675393103
+2025-10-21 17:19:13,697 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:54 - bot_get_prediction - Пользователь с телеграмма: telegram_user_id=1469740145  name=Usla
+2025-10-21 17:19:13,705 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:68 - bot_get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 17:19:13,711 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:77 - bot_get_prediction - Дата из БД: 2025-10-21 09:04:50.231656+00:00, преобразованная: 2025-10-21
+2025-10-21 17:19:13,868 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797561 is handled. Duration 172 ms by bot id=7675393103
+2025-10-21 17:19:18,705 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797562 is handled. Duration 156 ms by bot id=7675393103
+2025-10-21 17:19:20,591 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797563 is handled. Duration 139 ms by bot id=7675393103
+2025-10-21 17:19:31,372 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:69 - save_user - Пользователь обновлён: uuid=eb31c799-fc04-44d7-a3d0-189548d3605b,добавлено новое имя=шгшрлопопморб
+2025-10-21 17:19:49,312 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:119 - get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 17:19:49,319 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:127 - get_prediction - Дата с базы данных 2025-10-21 12:16:41.259263+00:00
+2025-10-21 17:19:49,319 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:128 - get_prediction - Преобразованная дата 2025-10-21
+2025-10-21 17:20:11,828 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:594 - start_polling - Polling stopped
+2025-10-21 17:20:11,836 - aiogram.dispatcher - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:219 - _listen_updates - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-10-21 17:20:11,836 - aiogram.dispatcher - WARNING - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:221 - _listen_updates - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7675393103)
+2025-10-21 17:20:12,089 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:395 - _polling - Polling stopped for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 17:20:12,353 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:10 - <module> - Stopping...
+2025-10-21 17:20:20,426 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:8 - <module> - Starting...
+2025-10-21 17:20:21,313 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:566 - start_polling - Start polling
+2025-10-21 17:20:21,425 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:363 - _polling - Run polling for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 17:20:24,691 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:119 - get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 17:20:24,697 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:127 - get_prediction - Дата с базы данных 2025-10-21 12:16:41.259263+00:00
+2025-10-21 17:20:24,698 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:128 - get_prediction - Преобразованная дата 2025-10-21
+2025-10-21 17:21:18,582 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:594 - start_polling - Polling stopped
+2025-10-21 17:21:18,591 - aiogram.dispatcher - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:219 - _listen_updates - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-10-21 17:21:18,592 - aiogram.dispatcher - WARNING - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:221 - _listen_updates - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7675393103)
+2025-10-21 17:21:18,847 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:395 - _polling - Polling stopped for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 17:21:19,110 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:10 - <module> - Stopping...
+2025-10-21 17:23:23,458 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:8 - <module> - Starting...
+2025-10-21 17:23:24,222 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:566 - start_polling - Start polling
+2025-10-21 17:23:24,353 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:363 - _polling - Run polling for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 17:23:28,099 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:54 - bot_get_prediction - Пользователь с телеграмма: telegram_user_id=1469740145  name=Usla
+2025-10-21 17:23:28,177 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:68 - bot_get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 17:23:28,185 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:76 - bot_get_prediction - Дата с базы данных 2025-10-21 09:04:50.231656+00:00
+2025-10-21 17:23:28,185 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:77 - bot_get_prediction - Преобразованная дата 2025-10-21
+2025-10-21 17:23:28,572 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797564 is handled. Duration 485 ms by bot id=7675393103
+2025-10-21 17:24:44,906 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:69 - save_user - Пользователь обновлён: uuid=eb31c799-fc04-44d7-a3d0-189548d3605b,добавлено новое имя=Дима
+2025-10-21 17:24:46,330 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:119 - get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 17:24:46,334 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:127 - get_prediction - Дата с базы данных 2025-10-21 12:16:41.259263+00:00
+2025-10-21 17:24:46,334 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:128 - get_prediction - Преобразованная дата 2025-10-21
+2025-10-21 17:28:36,304 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:594 - start_polling - Polling stopped
+2025-10-21 17:28:36,320 - aiogram.dispatcher - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:219 - _listen_updates - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-10-21 17:28:36,320 - aiogram.dispatcher - WARNING - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:221 - _listen_updates - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7675393103)
+2025-10-21 17:28:36,567 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:395 - _polling - Polling stopped for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 17:28:36,831 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:10 - <module> - Stopping...
+2025-10-21 17:28:41,537 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:8 - <module> - Starting...
+2025-10-21 17:28:42,567 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:566 - start_polling - Start polling
+2025-10-21 17:28:42,670 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:363 - _polling - Run polling for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 17:28:47,373 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:54 - bot_get_prediction - Пользователь с телеграмма: telegram_user_id=1469740145  name=Usla
+2025-10-21 17:28:47,452 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:68 - bot_get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 17:28:47,457 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:76 - bot_get_prediction - Дата с базы данных 2025-10-21 09:04:50.231656+00:00
+2025-10-21 17:28:47,458 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:77 - bot_get_prediction - Преобразованная дата 2025-10-21
+2025-10-21 17:28:47,913 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797565 is handled. Duration 531 ms by bot id=7675393103
+2025-10-21 17:29:30,191 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:119 - get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 17:29:30,195 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:127 - get_prediction - Дата с базы данных 2025-10-21 12:16:41.259263+00:00
+2025-10-21 17:29:30,196 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:128 - get_prediction - Преобразованная дата 2025-10-21
+2025-10-21 17:29:35,720 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:119 - get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 17:29:35,729 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:127 - get_prediction - Дата с базы данных 2025-10-21 12:16:41.259263+00:00
+2025-10-21 17:29:35,729 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:128 - get_prediction - Преобразованная дата 2025-10-21
+2025-10-21 17:29:46,784 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:69 - save_user - Пользователь обновлён: uuid=eb31c799-fc04-44d7-a3d0-189548d3605b,добавлено новое имя=Вишня
+2025-10-21 17:29:48,422 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:119 - get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 17:29:48,428 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:127 - get_prediction - Дата с базы данных 2025-10-21 12:16:41.259263+00:00
+2025-10-21 17:29:48,428 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:128 - get_prediction - Преобразованная дата 2025-10-21
+2025-10-21 17:30:28,306 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:594 - start_polling - Polling stopped
+2025-10-21 17:30:28,314 - aiogram.dispatcher - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:219 - _listen_updates - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-10-21 17:30:28,314 - aiogram.dispatcher - WARNING - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:221 - _listen_updates - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7675393103)
+2025-10-21 17:30:28,572 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:395 - _polling - Polling stopped for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 17:30:28,850 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:10 - <module> - Stopping...
+2025-10-21 17:33:24,387 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:8 - <module> - Starting...
+2025-10-21 17:33:25,428 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:566 - start_polling - Start polling
+2025-10-21 17:33:25,545 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:363 - _polling - Run polling for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 17:33:38,404 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:115 - get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 17:33:38,410 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:123 - get_prediction - Дата с базы данных 2025-10-21 12:16:41.259263+00:00
+2025-10-21 17:33:38,411 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:124 - get_prediction - Преобразованная дата 2025-10-21
+2025-10-21 17:33:45,175 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:115 - get_prediction - Сегодняшняя дата 2025-10-21
+2025-10-21 17:33:45,181 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:123 - get_prediction - Дата с базы данных 2025-10-21 12:16:41.259263+00:00
+2025-10-21 17:33:45,182 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:124 - get_prediction - Преобразованная дата 2025-10-21
+2025-10-21 17:33:48,831 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:594 - start_polling - Polling stopped
+2025-10-21 17:33:48,847 - aiogram.dispatcher - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:219 - _listen_updates - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-10-21 17:33:48,847 - aiogram.dispatcher - WARNING - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:221 - _listen_updates - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7675393103)
+2025-10-21 17:33:49,109 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:395 - _polling - Polling stopped for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-21 17:33:49,375 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:10 - <module> - Stopping...

@@ -66,13 +66,20 @@ async def bot_get_prediction(message: Message) -> None:
 
     today_date = datetime.now(timezone.utc).date()
     logger.info(f"Сегодняшняя дата {today_date}")
+
     prediction_datetime = await user_service.get_date_prediction(telegram_user_id)
-    local_date = prediction_datetime.astimezone(timezone.utc).date()
-    logger.info(f"Дата с базы данных {prediction_datetime}")
-    logger.info(f"Преобразованная дата {local_date}")
+    if prediction_datetime is None:
+        logger.info("Дата предсказания отсутствует — генерируем новое предсказание")
+        needs_new_prediction = True
+    else:
+        local_date = prediction_datetime.astimezone(timezone.utc).date()
+        logger.info(f"Дата с базы данных {prediction_datetime}")
+        logger.info(f"Преобразованная дата {local_date}")
+        needs_new_prediction = local_date != today_date
+
     prediction = await prediction_service.get_prediction_for_user(user.id)
 
-    if prediction and local_date == today_date:
+    if prediction and not needs_new_prediction:
         response_text = prediction.main_prediction
     else:
         predictor = HuggingFacePredictor()

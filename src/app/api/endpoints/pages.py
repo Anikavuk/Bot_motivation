@@ -15,91 +15,68 @@ from src.app.services.motivation_ai import HuggingFacePredictor
 logger = get_logger(name=__name__)
 
 router = APIRouter()
-templates = Jinja2Templates(directory="app/templates")
+templates = Jinja2Templates(directory="src/app/templates")
 
 
 @router.get("/", response_class=HTMLResponse)
 def index(request: Request):
     """Метод загрузки стартовой страницы"""
-    session_uuid = request.cookies.get("session_id")
+    if "session_id" not in request.session:
+        request.session["session_id"] = str(uuid.uuid4())
 
-    if not session_uuid:
-        session_uuid = str(uuid.uuid4())
-    response = templates.TemplateResponse(
-        request=request, name="index.html", context={"id": session_uuid}
+    return templates.TemplateResponse(
+        request=request,
+        name="index.html",
+        context={},
     )
-    response.set_cookie(
-        key="session_id",
-        value=session_uuid,
-        httponly=True,
-        secure=False,
-        samesite="lax",
-        max_age=31536000,
-        path="/",
-    )
-
-    return response
 
 
 @router.post("/create_user", response_class=HTMLResponse)
-def create_user(
-    request: Request,
-    session_uuid: str = Form(None),
-):
+def create_user(request: Request):
     """Метод загрузки страницы создания пользователя"""
-    final_uuid = session_uuid or request.cookies.get("session_id") or str(uuid.uuid4())
-    response = templates.TemplateResponse(
-        request=request, name="create_user.html", context={"id": final_uuid}
-    )
-    response.set_cookie(
-        key="session_id",
-        value=final_uuid,
-        httponly=True,
-        samesite="lax",
-        max_age=31536000,
-        path="/",
-    )
+    if "session_id" not in request.session:
+        request.session["session_id"] = str(uuid.uuid4())
 
-    return response
+    return templates.TemplateResponse(
+        request=request, name="create_user.html", context={}
+    )
 
 
 @router.post("/save_user", response_class=HTMLResponse)
 async def save_user(
     request: Request,
     name: str = Form(...),
-    session_uuid: str = Form(...),
     service: UserService = Depends(UserService),
 ):
     """Метод загрузки страницы сохранения пользователя"""
+    session_id = request.session.get("session_id")
+    if not session_id:
+        logger.warning("Попытка сохранить пользователя без сессии")
+        return templates.TemplateResponse(
+            request=request,
+            name="errors.html",
+            context={"error": "Сессия недействительна. Попробуйте обновить страницу."},
+            status_code=400,
+        )
     try:
-        existing_user = await service.get_user_by_uuid(session_uuid)
+        existing_user = await service.get_user_by_uuid(session_id)
         if existing_user:
             await service.update_user_name(user_id=existing_user.id, new_name=name)
             logger.info(
-                f"Пользователь обновлён: uuid={session_uuid},добавлено новое имя={name}"
+                f"Пользователь обновлён: uuid={session_id},добавлено новое имя={name}"
             )
         else:
-            user_data = CreateUser(name=name, uuid=session_uuid)
+            user_data = CreateUser(name=name, uuid=session_id)
             await service.create_user(user=user_data)
-            logger.info(f"Пользователь создан: name={name}, uuid={session_uuid}")
-        response = templates.TemplateResponse(
+            logger.info(f"Пользователь создан: name={name}, uuid={session_id}")
+        return templates.TemplateResponse(
             request=request,
             name="save_user.html",
-            context={"name": name, "id": session_uuid},
+            context={"name": name},
         )
-        response.set_cookie(
-            key="session_id",
-            value=session_uuid,
-            httponly=True,
-            samesite="lax",
-            max_age=31536000,
-            path="/",
-        )
-
-        return response
     except HTTPException as e:
         logger.warning(
-            f"Ошибка при создании пользователя: {e.detail} (uuid={session_uuid})"
+            f"Ошибка при создании пользователя: {e.detail} (uuid={session_id})"
         )
         return templates.TemplateResponse(
             request=request,
@@ -113,58 +90,60 @@ async def save_user(
 async def get_prediction(
     request: Request,
     name: Optional[str] = Form(None),
-    session_uuid: str = Form(...),
     user_service: UserService = Depends(UserService),
     prediction_service: PredictionService = Depends(PredictionService),
 ):
     """Метод загрузки страницы с предсказанием"""
+    session_id = request.session.get("session_id")
+    if not session_id:
+        logger.warning("Попытка получить предсказание без сессии")
+        return templates.TemplateResponse(
+            request=request,
+            name="errors.html",
+            context={"error": "Сессия недействительна. Вернитесь на главную страницу."},
+            status_code=400,
+        )
     try:
-        user = await user_service.get_user_by_uuid(session_uuid)
+        user = await user_service.get_user_by_uuid(session_id)
         if not user:
             user = await user_service.create_user(
-                CreateUser(name=name, uuid=session_uuid)
+                CreateUser(name=name, uuid=session_id)
             )
-            logger.info(f"Пользователь создан: name={name}, uuid={session_uuid}")
+            logger.info(f"Пользователь создан: name={name}, uuid={session_id}")
 
         today_date = datetime.now(timezone.utc).date()
         logger.info(f"Сегодняшняя дата {today_date}")
-        prediction_datetime = await user_service.get_date_prediction(session_uuid)
-        local_date = prediction_datetime.astimezone(timezone.utc).date()
-        logger.info(f"Дата с базы данных {prediction_datetime}")
-        logger.info(f"Преобразованная дата {local_date}")
+
+        prediction_datetime = await user_service.get_date_prediction(session_id)
+        if prediction_datetime is None:
+            logger.info("Дата предсказания отсутствует — генерируем новое предсказание")
+            needs_new_prediction = True
+        else:
+            local_date = prediction_datetime.astimezone(timezone.utc).date()
+            logger.info(f"Дата с базы данных {prediction_datetime}")
+            logger.info(f"Преобразованная дата {local_date}")
+            needs_new_prediction = local_date != today_date
+
         prediction = await prediction_service.get_prediction_for_user(user.id)
 
-        if prediction and local_date == today_date:
+        if prediction and not needs_new_prediction:
             response_text = prediction.main_prediction
         else:
             predictor = HuggingFacePredictor()
             response_text = predictor.get_prediction()
             await prediction_service.save_prediction_in_db(response_text, user.id)
             logger.info(
-                f"Предсказание для пользователя user.id={user.id}  name={user.name}, uuid={session_uuid} сохранено"
+                f"Предсказание для пользователя user.id={user.id}  name={user.name}, uuid={session_id} сохранено"
             )
 
-        response = templates.TemplateResponse(
+        return templates.TemplateResponse(
             request=request,
             name="get_prediction.html",
-            context={
-                "prediction": response_text,
-                "name": name,
-                "id": session_uuid,
-            },
+            context={"prediction": response_text, "name": name},
         )
-        response.set_cookie(
-            key="session_id",
-            value=session_uuid,
-            httponly=True,
-            samesite="lax",
-            max_age=31536000,
-            path="/",
-        )
-        return response
     except HTTPException as e:
         logger.warning(
-            f"Ошибка при загрузке страницы с предсказанием: {e.detail} (uuid={session_uuid})"
+            f"Ошибка при загрузке страницы с предсказанием: {e.detail} (uuid={session_id})"
         )
         return templates.TemplateResponse(
             request=request,

@@ -14,7 +14,6 @@
     <div class="button-row">
       <form id="prediction-form" method="post" action="/get_prediction">
         <input type="hidden" name="name" value="{{ name or '' }}" />
-        <input type="hidden" name="session_uuid" value="{{ id or '' }}" />
         <button type="submit" class="btn btn-primary">
           Получить предсказание
         </button>
