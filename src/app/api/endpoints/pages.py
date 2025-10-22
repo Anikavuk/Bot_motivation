@@ -31,7 +31,7 @@ def index(request: Request):
     )
 
 
-@router.get("/create_user", response_class=HTMLResponse)
+@router.post("/create_user", response_class=HTMLResponse)
 def create_user(request: Request):
     """Метод загрузки страницы создания пользователя"""
     if "session_id" not in request.session:

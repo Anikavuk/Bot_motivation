@@ -4928,3 +4928,681 @@ AttributeError: 'NoneType' object has no attribute 'astimezone'
 2025-10-22 17:48:51,046 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:71 - save_user - Пользователь создан: name=TestUser, uuid=4f82ad0c-6d7b-4fb2-bbf6-c17d0d4ce0b2
 2025-10-22 17:48:51,220 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:65 - save_user - Пользователь обновлён: uuid=fed9b09e-ab08-4d25-a3fd-1e091f03a21b,добавлено новое имя=TestUser
 2025-10-22 17:48:51,249 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:71 - save_user - Пользователь создан: name=Мария, uuid=e24095fb-b8aa-41e5-8e0f-6ad7f90825c6
+2025-10-22 18:31:54,312 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:8 - <module> - Starting...
+2025-10-22 18:31:55,234 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:566 - start_polling - Start polling
+2025-10-22 18:31:55,354 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:363 - _polling - Run polling for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-22 18:31:55,487 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:54 - bot_get_prediction - Пользователь с телеграмма: telegram_user_id=308441852  name=Лена
+2025-10-22 18:31:55,491 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:54 - bot_get_prediction - Пользователь с телеграмма: telegram_user_id=308441852  name=Лена
+2025-10-22 18:31:59,465 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:54 - bot_get_prediction - Пользователь с телеграмма: telegram_user_id=1469740145  name=Usla
+2025-10-22 18:31:59,585 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797566 is not handled. Duration 4094 ms by bot id=7675393103
+2025-10-22 18:31:59,585 - aiogram.event - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:315 - _process_update - Cause exception while process update id=842797566 by bot id=7675393103
+ConnectionRefusedError: [WinError 1225] Удаленный компьютер отклонил это сетевое подключение
+Traceback (most recent call last):
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\fsm\middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 166, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py", line 60, in bot_get_prediction
+    user = await user_service.get_user_by_uuid(telegram_user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\src\app\auth\user_service.py", line 67, in get_user_by_uuid
+    result = await session.execute(query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 463, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2241, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2110, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1189, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3277, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
+    self.__connect()
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 964, in connect
+    await_only(creator_fn(*arg, **kw)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connection.py", line 2421, in connect
+    return await connect_utils._connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connect_utils.py", line 1075, in _connect
+    raise last_error or exceptions.TargetServerAttributeNotMatched(
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connect_utils.py", line 1049, in _connect
+    conn = await _connect_addr(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connect_utils.py", line 886, in _connect_addr
+    return await __connect_addr(params, True, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connect_utils.py", line 931, in __connect_addr
+    tr, pr = await connector
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connect_utils.py", line 802, in _create_ssl_connection
+    tr, pr = await loop.create_connection(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1126, in create_connection
+    raise exceptions[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1103, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1006, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 729, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 803, in _poll
+    value = callback(transferred, key, ov)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 599, in finish_connect
+    ov.getresult()
+ConnectionRefusedError: [WinError 1225] Удаленный компьютер отклонил это сетевое подключение
+2025-10-22 18:31:59,712 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797567 is not handled. Duration 4235 ms by bot id=7675393103
+2025-10-22 18:31:59,712 - aiogram.event - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:315 - _process_update - Cause exception while process update id=842797567 by bot id=7675393103
+ConnectionRefusedError: [WinError 1225] Удаленный компьютер отклонил это сетевое подключение
+Traceback (most recent call last):
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\fsm\middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 166, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py", line 60, in bot_get_prediction
+    user = await user_service.get_user_by_uuid(telegram_user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\src\app\auth\user_service.py", line 67, in get_user_by_uuid
+    result = await session.execute(query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 463, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2241, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2110, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1189, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3277, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
+    self.__connect()
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 964, in connect
+    await_only(creator_fn(*arg, **kw)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connection.py", line 2421, in connect
+    return await connect_utils._connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connect_utils.py", line 1075, in _connect
+    raise last_error or exceptions.TargetServerAttributeNotMatched(
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connect_utils.py", line 1049, in _connect
+    conn = await _connect_addr(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connect_utils.py", line 886, in _connect_addr
+    return await __connect_addr(params, True, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connect_utils.py", line 931, in __connect_addr
+    tr, pr = await connector
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connect_utils.py", line 802, in _create_ssl_connection
+    tr, pr = await loop.create_connection(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1126, in create_connection
+    raise exceptions[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1103, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1006, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 729, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 803, in _poll
+    value = callback(transferred, key, ov)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 599, in finish_connect
+    ov.getresult()
+ConnectionRefusedError: [WinError 1225] Удаленный компьютер отклонил это сетевое подключение
+2025-10-22 18:32:03,562 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797568 is not handled. Duration 4093 ms by bot id=7675393103
+2025-10-22 18:32:03,563 - aiogram.event - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:315 - _process_update - Cause exception while process update id=842797568 by bot id=7675393103
+ConnectionRefusedError: [WinError 1225] Удаленный компьютер отклонил это сетевое подключение
+Traceback (most recent call last):
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\fsm\middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 166, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py", line 60, in bot_get_prediction
+    user = await user_service.get_user_by_uuid(telegram_user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\src\app\auth\user_service.py", line 67, in get_user_by_uuid
+    result = await session.execute(query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 463, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2241, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2110, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1189, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3277, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
+    self.__connect()
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 964, in connect
+    await_only(creator_fn(*arg, **kw)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connection.py", line 2421, in connect
+    return await connect_utils._connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connect_utils.py", line 1075, in _connect
+    raise last_error or exceptions.TargetServerAttributeNotMatched(
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connect_utils.py", line 1049, in _connect
+    conn = await _connect_addr(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connect_utils.py", line 886, in _connect_addr
+    return await __connect_addr(params, True, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connect_utils.py", line 931, in __connect_addr
+    tr, pr = await connector
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\asyncpg\connect_utils.py", line 802, in _create_ssl_connection
+    tr, pr = await loop.create_connection(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1126, in create_connection
+    raise exceptions[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1103, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1006, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 729, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 803, in _poll
+    value = callback(transferred, key, ov)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 599, in finish_connect
+    ov.getresult()
+ConnectionRefusedError: [WinError 1225] Удаленный компьютер отклонил это сетевое подключение
+2025-10-22 18:32:22,351 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:54 - bot_get_prediction - Пользователь с телеграмма: telegram_user_id=1469740145  name=Usla
+2025-10-22 18:32:22,488 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:68 - bot_get_prediction - Сегодняшняя дата 2025-10-22
+2025-10-22 18:32:22,493 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:76 - bot_get_prediction - Дата с базы данных 2025-10-21 09:04:50.231656+00:00
+2025-10-22 18:32:22,493 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:77 - bot_get_prediction - Преобразованная дата 2025-10-21
+2025-10-22 18:32:25,116 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797569 is not handled. Duration 2764 ms by bot id=7675393103
+2025-10-22 18:32:25,116 - aiogram.event - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:315 - _process_update - Cause exception while process update id=842797569 by bot id=7675393103
+HfHubHTTPError: 429 Client Error: Too Many Requests for url: https://router.huggingface.co/cerebras/v1/chat/completions (Request ID: Root=1-68f8dce8-20c414ee4e839e2529b60ab8;0c388daa-1520-4fb9-8b73-f8e345497d32)
+Traceback (most recent call last):
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\huggingface_hub\utils\_http.py", line 407, in hf_raise_for_status
+    response.raise_for_status()
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://router.huggingface.co/cerebras/v1/chat/completions
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\fsm\middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\router.py", line 166, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py", line 86, in bot_get_prediction
+    response_text = predictor.get_prediction()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\src\app\services\motivation_ai.py", line 55, in get_prediction
+    completion = self.client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\huggingface_hub\inference\_client.py", line 919, in chat_completion
+    data = self._inner_post(request_parameters, stream=stream)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\huggingface_hub\inference\_client.py", line 275, in _inner_post
+    hf_raise_for_status(response)
+  File "C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\huggingface_hub\utils\_http.py", line 480, in hf_raise_for_status
+    raise _format(HfHubHTTPError, str(e), response) from e
+huggingface_hub.errors.HfHubHTTPError: 429 Client Error: Too Many Requests for url: https://router.huggingface.co/cerebras/v1/chat/completions (Request ID: Root=1-68f8dce8-20c414ee4e839e2529b60ab8;0c388daa-1520-4fb9-8b73-f8e345497d32)
+2025-10-22 18:32:42,177 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797570 is handled. Duration 609 ms by bot id=7675393103
+2025-10-22 18:32:44,510 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797571 is handled. Duration 171 ms by bot id=7675393103
+2025-10-22 18:32:47,446 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797572 is handled. Duration 172 ms by bot id=7675393103
+2025-10-22 18:32:49,997 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:54 - bot_get_prediction - Пользователь с телеграмма: telegram_user_id=1469740145  name=Usla
+2025-10-22 18:32:50,005 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:68 - bot_get_prediction - Сегодняшняя дата 2025-10-22
+2025-10-22 18:32:50,011 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:76 - bot_get_prediction - Дата с базы данных 2025-10-21 09:04:50.231656+00:00
+2025-10-22 18:32:50,011 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:77 - bot_get_prediction - Преобразованная дата 2025-10-21
+2025-10-22 18:34:12,845 - aiogram.dispatcher - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:219 - _listen_updates - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-10-22 18:34:12,845 - aiogram.dispatcher - WARNING - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:221 - _listen_updates - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7675393103)
+2025-10-22 18:34:12,862 - src.app.services.prediction_service - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\services\prediction_service.py:57 - save_prediction_in_db - Пользователь user_id=145 сохранен
+2025-10-22 18:34:12,863 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:88 - bot_get_prediction - Предсказание для пользователя user.id=145  name=Usla, uuid=1469740145 сохранено
+2025-10-22 18:34:13,288 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797573 is handled. Duration 83280 ms by bot id=7675393103
+2025-10-22 18:34:13,990 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:233 - _listen_updates - Connection established (tryings = 1, bot id = 7675393103)
+2025-10-22 18:34:13,992 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:54 - bot_get_prediction - Пользователь с телеграмма: telegram_user_id=1469740145  name=Usla
+2025-10-22 18:34:13,993 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:54 - bot_get_prediction - Пользователь с телеграмма: telegram_user_id=1469740145  name=Usla
+2025-10-22 18:34:14,001 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:68 - bot_get_prediction - Сегодняшняя дата 2025-10-22
+2025-10-22 18:34:14,030 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:76 - bot_get_prediction - Дата с базы данных 2025-10-22 13:34:12.843325+00:00
+2025-10-22 18:34:14,030 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:77 - bot_get_prediction - Преобразованная дата 2025-10-22
+2025-10-22 18:34:14,046 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:68 - bot_get_prediction - Сегодняшняя дата 2025-10-22
+2025-10-22 18:34:14,049 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:76 - bot_get_prediction - Дата с базы данных 2025-10-22 13:34:12.843325+00:00
+2025-10-22 18:34:14,049 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:77 - bot_get_prediction - Преобразованная дата 2025-10-22
+2025-10-22 18:34:14,431 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797575 is handled. Duration 437 ms by bot id=7675393103
+2025-10-22 18:34:14,464 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797574 is handled. Duration 485 ms by bot id=7675393103
+2025-10-22 18:42:36,303 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797576 is handled. Duration 327 ms by bot id=7675393103
+2025-10-22 18:42:56,208 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:115 - get_prediction - Сегодняшняя дата 2025-10-22
+2025-10-22 18:42:56,214 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:123 - get_prediction - Дата с базы данных 2025-10-21 12:16:41.259263+00:00
+2025-10-22 18:42:56,214 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:124 - get_prediction - Преобразованная дата 2025-10-21
+2025-10-22 18:44:11,350 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:115 - get_prediction - Сегодняшняя дата 2025-10-22
+2025-10-22 18:44:11,354 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:123 - get_prediction - Дата с базы данных 2025-10-21 12:16:41.259263+00:00
+2025-10-22 18:44:11,354 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:124 - get_prediction - Преобразованная дата 2025-10-21
+2025-10-22 18:44:12,874 - src.app.services.prediction_service - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\services\prediction_service.py:57 - save_prediction_in_db - Пользователь user_id=166 сохранен
+2025-10-22 18:44:12,874 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:135 - get_prediction - Предсказание для пользователя user.id=166  name=Вишня, uuid=eb31c799-fc04-44d7-a3d0-189548d3605b сохранено
+2025-10-22 18:45:29,701 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:112 - get_prediction - Пользователь создан: name=, uuid=df3288dd-cbae-4b3c-ade0-fbfe4e8b94e2
+2025-10-22 18:45:29,702 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:115 - get_prediction - Сегодняшняя дата 2025-10-22
+2025-10-22 18:45:29,707 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:119 - get_prediction - Дата предсказания отсутствует — генерируем новое предсказание
+2025-10-22 18:45:31,241 - src.app.services.prediction_service - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\services\prediction_service.py:57 - save_prediction_in_db - Пользователь user_id=170 сохранен
+2025-10-22 18:45:31,241 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:135 - get_prediction - Предсказание для пользователя user.id=170  name=, uuid=df3288dd-cbae-4b3c-ade0-fbfe4e8b94e2 сохранено
+2025-10-22 18:47:05,036 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:594 - start_polling - Polling stopped
+2025-10-22 18:47:05,044 - aiogram.dispatcher - ERROR - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:219 - _listen_updates - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-10-22 18:47:05,044 - aiogram.dispatcher - WARNING - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:221 - _listen_updates - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7675393103)
+2025-10-22 18:47:05,314 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:395 - _polling - Polling stopped for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-22 18:47:05,580 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:10 - <module> - Stopping...
+2025-10-22 18:47:11,681 - __main__ - INFO - C:\Users\HP\PycharmProjects\botic_5\src\main.py:8 - <module> - Starting...
+2025-10-22 18:47:12,582 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:566 - start_polling - Start polling
+2025-10-22 18:47:12,716 - aiogram.dispatcher - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:363 - _polling - Run polling for bot @Motivation_Usla_bot id=7675393103 - 'motivation'
+2025-10-22 18:47:23,834 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:65 - save_user - Пользователь обновлён: uuid=eb31c799-fc04-44d7-a3d0-189548d3605b,добавлено новое имя=Черешня
+2025-10-22 18:47:25,583 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:115 - get_prediction - Сегодняшняя дата 2025-10-22
+2025-10-22 18:47:25,589 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:123 - get_prediction - Дата с базы данных 2025-10-22 13:44:12.859288+00:00
+2025-10-22 18:47:25,589 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:124 - get_prediction - Преобразованная дата 2025-10-22
+2025-10-22 18:47:44,870 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:65 - save_user - Пользователь обновлён: uuid=df3288dd-cbae-4b3c-ade0-fbfe4e8b94e2,добавлено новое имя=Один
+2025-10-22 18:47:46,039 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:115 - get_prediction - Сегодняшняя дата 2025-10-22
+2025-10-22 18:47:46,045 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:123 - get_prediction - Дата с базы данных 2025-10-22 13:45:31.224330+00:00
+2025-10-22 18:47:46,045 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:124 - get_prediction - Преобразованная дата 2025-10-22
+2025-10-22 18:48:08,047 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797577 is handled. Duration 1094 ms by bot id=7675393103
+2025-10-22 18:48:10,003 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:54 - bot_get_prediction - Пользователь с телеграмма: telegram_user_id=1469740145  name=Usla
+2025-10-22 18:48:10,114 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:68 - bot_get_prediction - Сегодняшняя дата 2025-10-22
+2025-10-22 18:48:10,118 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:76 - bot_get_prediction - Дата с базы данных 2025-10-22 13:34:12.843325+00:00
+2025-10-22 18:48:10,119 - src.app.botlogic.handlers.handler_telegram - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\botlogic\handlers\handler_telegram.py:77 - bot_get_prediction - Преобразованная дата 2025-10-22
+2025-10-22 18:48:10,357 - aiogram.event - INFO - C:\Users\HP\PycharmProjects\botic_5\.venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py:172 - feed_update - Update id=842797578 is handled. Duration 358 ms by bot id=7675393103
+2025-10-22 18:48:23,141 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:115 - get_prediction - Сегодняшняя дата 2025-10-22
+2025-10-22 18:48:23,149 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:123 - get_prediction - Дата с базы данных 2025-10-22 13:45:31.224330+00:00
+2025-10-22 18:48:23,150 - src.app.api.endpoints.pages - INFO - C:\Users\HP\PycharmProjects\botic_5\src\app\api\endpoints\pages.py:124 - get_prediction - Преобразованная дата 2025-10-22
