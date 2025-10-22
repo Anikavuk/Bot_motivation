@@ -1,10 +1,11 @@
+import uuid
 from datetime import datetime, timezone
 
-from app.core.config_run import web_app
+from src.app.core.config_run import web_app
 import pytest
 from httpx import AsyncClient, ASGITransport
 from unittest.mock import patch, AsyncMock
-from app.services.motivation_ai import HuggingFacePredictor
+from src.app.services.motivation_ai import HuggingFacePredictor
 
 
 @pytest.mark.asyncio
@@ -16,7 +17,6 @@ async def test_get_prediction_creates_user_and_new_prediction(
     """Если пользователя нет — создаётся новый, и генерируется новое предсказание"""
 
     name = "Анна"
-    session_uuid = "test-uuid-123"
     fake_prediction_text = "Сегодня твой день!"
 
     # Настройка моков
@@ -39,24 +39,23 @@ async def test_get_prediction_creates_user_and_new_prediction(
         async with AsyncClient(
             transport=transport, base_url="http://test"
         ) as async_client:
-            response = await async_client.post(
-                "/get_prediction", data={"name": name, "session_uuid": session_uuid}
-            )
+            await async_client.get("/")
+            response = await async_client.post("/get_prediction", data={"name": name})
 
-    # Проверяем успешный ответ
+    # Проверяем
     assert response.status_code == 200
-
-    # Проверяем, что имя и UUID переданы в шаблон
-    assert response.status_code == 200
-    # assert session_uuid in response.text
-    assert fake_prediction_text in response.text
-    assert "session_id=test-uuid-123" in response.headers.get("set-cookie", "")
     assert "text/html" in response.headers.get("content-type", "")
+    assert fake_prediction_text in response.text
+
+    mock_user_service.get_user_by_uuid.assert_awaited_once()
+    args, _ = mock_user_service.get_user_by_uuid.call_args
+    called_uuid = args[0]
+    # Убедимся, что передан валидный UUID
+    uuid.UUID(called_uuid)  # выбросит ValueError, если не UUID
 
     # Проверка вызовов
-    mock_user_service.get_user_by_uuid.assert_awaited_once_with(session_uuid)
     mock_user_service.create_user.assert_awaited_once()
-    mock_user_service.get_date_prediction.assert_awaited_once_with(session_uuid)
+    mock_user_service.get_date_prediction.assert_awaited_once()
     mock_prediction_service.get_prediction_for_user.assert_awaited_once_with(
         fake_user.id
     )

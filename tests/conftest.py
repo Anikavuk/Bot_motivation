@@ -12,7 +12,7 @@ def patch_settings(monkeypatch):
     def mock_get_settings():
         return fake_settings
 
-    monkeypatch.setattr("app.core.settings.get_settings", mock_get_settings)
+    monkeypatch.setattr("src.app.core.settings.get_settings", mock_get_settings)
 
 
 @pytest.fixture()
