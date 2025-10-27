@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Сохранение пользователя</title>
+  </head>
+  <body>
+    {% if name and name.strip() %}
+    <h1>Приятно познакомиться, {{name}}!</h1>
+    {% else %}
+    <h1></h1>
+    {% endif %}
+
+    <div class="button-row">
+      <form id="prediction-form" method="post" action="/get_prediction">
+        <input type="hidden" name="name" value="{{ name or '' }}" />
+        <button type="submit" class="btn btn-primary">
+          Получить предсказание
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

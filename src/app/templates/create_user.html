@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Создать аккаунт</title>
+    <style>
+      .button-row {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-top: 15px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      label {
+        margin-right: 10px;
+      }
+
+      /* Простые стили для кнопок (опционально) */
+      .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Привет, ещё раз!</h1>
+    <p>Напиши своё имя, чтобы получать приятное предсказание!</p>
+
+    <!-- Форма для сохранения -->
+    <form method="post" action="/save_user">
+      <div class="form-group">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+
+      <div class="button-row">
+        <button type="submit" class="btn">Сохранить</button>
+
+        <!-- Кнопка "Получить предсказание" без сохранения -->
+        <button
+          type="submit"
+          formaction="/get_prediction"
+          formmethod="post"
+          formnovalidate
+          class="btn"
+        >
+          Получить предсказание
+        </button>
+      </div>
+    </form>
+  </body>
+</html>
