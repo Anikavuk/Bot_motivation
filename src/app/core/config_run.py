@@ -2,7 +2,6 @@ import asyncio
 import os
 from contextlib import asynccontextmanager
 from dotenv import load_dotenv
-import uvicorn
 from fastapi import FastAPI
 from starlette.middleware.sessions import SessionMiddleware
 
@@ -16,6 +15,7 @@ load_dotenv()
 
 @asynccontextmanager
 async def dev_lifespan(app: FastAPI):
+    dispatcher.include_router(handlers_router)
     await set_commands(bot)
 
     async def _start_polling():
@@ -40,14 +40,14 @@ web_app.add_middleware(
 
 web_app.include_router(router)
 
-
-def run_app():
-    dispatcher.include_router(handlers_router)
-    uvicorn.run(
-        web_app,
-        host="127.0.0.1",
-        port=8000,
-        loop="asyncio",
-        log_config=None,
-        log_level="debug",
-    )
+#
+# def run_app():
+#     dispatcher.include_router(handlers_router)
+#     uvicorn.run(
+#         web_app,
+#         host="0.0.0.0",
+#         port=8000,
+#         loop="asyncio",
+#         log_config=None,
+#         log_level="debug",
+#     )

@@ -55,3 +55,14 @@
 │   └── test_save_user.py
 ├── uv.lock
 └── uv.yaml
+
+botic_5
+├── pyproject.toml     ✅
+├── uv.lock            ✅ (после uv lock)
+├── src/
+│       └── main.py        ✅
+        └── app/
+├── docker-compose.dev.yaml
+└── docker/
+    └── nginx/
+        └── nginx.conf

@@ -1,0 +1,10 @@
+# .dockerignore
+pgdata/
+.git/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+.gitignore
+README.md
+docker-compose*.yaml
