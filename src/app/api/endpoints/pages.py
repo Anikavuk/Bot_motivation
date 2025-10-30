@@ -1,4 +1,6 @@
 import uuid
+
+from pathlib import Path
 from src.app.core.logger import get_logger
 from typing import Optional
 from fastapi import APIRouter, Depends, Request, HTTPException
@@ -15,7 +17,10 @@ from src.app.services.motivation_ai import HuggingFacePredictor
 logger = get_logger(name=__name__)
 
 router = APIRouter()
-templates = Jinja2Templates(directory="src/app/templates")
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+TEMPLATES_DIR = BASE_DIR / "templates"
+
+templates = Jinja2Templates(directory=str(TEMPLATES_DIR))
 
 
 @router.get("/", response_class=HTMLResponse)
