@@ -7,6 +7,7 @@ from sqlalchemy.exc import IntegrityError, OperationalError, DBAPIError
 from src.app.schemas.schemas import CreateUser
 from src.app.core.db_dependency import DBDependency
 from src.app.db.models import User
+from typing import Optional
 
 
 class UserService:
@@ -24,7 +25,34 @@ class UserService:
         self.db = db
         self.model = User
 
-    async def create_user(self, user: CreateUser) -> User:
+    async def get_or_create_user_by_session(
+            self, session_id: str, name: Optional[str] = None
+    ) -> User:
+        """
+        Возвращает существующего пользователя по session_id или создаёт нового.
+
+        Если пользователь существует и передано новое имя — обновляет имя.
+        Если пользователь новый и имя не указано — использует значение по умолчанию.
+
+        :param session_id: UUID сессии из запроса.
+        :param name: Имя пользователя (опционально).
+        :return: Объект User.
+        :raises HTTPException: При ошибках базы данных.
+        """
+        # Получаем существующего пользователя
+        user = await self.get_user_by_uuid(session_id)
+
+        if user:
+            # Если имя передано и отличается — обновляем
+            if name is not None and user.name != name:
+                await self.update_user_name(user.id, name)
+                user.name = name
+            return user
+        else:
+            user_data = CreateUser(name=name, uuid=session_id)
+            return await self._create_user(user_data)
+
+    async def _create_user(self, user: CreateUser) -> User:
         """
         Создает нового пользователя в базе данных.
 

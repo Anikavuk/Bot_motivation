@@ -7,7 +7,7 @@ from src.app.core.db_dependency import DBDependency
 from src.app.db.models import User
 from src.app.db.models import Prediction
 from src.app.core.logger import get_logger
-
+from src.app.services.motivation_service import HuggingFacePredictor
 
 logger = get_logger(name=__name__)
 
@@ -79,3 +79,43 @@ class PredictionService:
             )
             result = await session.execute(query)
             return result.scalar_one_or_none()
+
+    async def get_or_create_daily_prediction(self, user_id: int, user_name: str, session_id: str) -> str:
+        """
+        Возвращает актуальное дневное предсказание для пользователя.
+        Если сегодня ещё не генерировалось — создаёт новое.
+        """
+        today = datetime.now(dt_timezone.utc).date()
+        logger.info("Сегодняшняя дата=%s", today)
+
+        # Получаем дату последнего предсказания из модели User
+        async with self.db.db_session() as session:
+            user_query = select(self.user_model.date_prediction).where(self.user_model.id == user_id)
+            result = await session.execute(user_query)
+            prediction_datetime = result.scalar_one_or_none()
+
+        if prediction_datetime is None:
+            logger.info("Дата предсказания отсутствует — генерируем новое предсказание")
+            needs_new_prediction = True
+        else:
+            local_date = prediction_datetime.astimezone(dt_timezone.utc).date()
+            logger.info("Дата последнего предсказания=%s", local_date)
+            needs_new_prediction = local_date != today
+
+        # Если есть актуальное предсказание — возвращаем его
+        if not needs_new_prediction:
+            prediction = await self.get_prediction_for_user(user_id)
+            if prediction:
+                logger.info("Используем кэшированное предсказание")
+                return prediction.main_prediction
+
+        # Генерируем новое предсказание
+        logger.info("Генерируем новое предсказание")
+        predictor = HuggingFacePredictor()
+        response_text = predictor.get_prediction()
+        await self.save_prediction_in_db(response_text, user_id)
+        logger.info(
+            "Предсказание сохранено: user_id=%s, name=%s, uuid=%s",
+            user_id, user_name, session_id
+        )
+        return response_text
