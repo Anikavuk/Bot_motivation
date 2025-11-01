@@ -4,7 +4,7 @@ from fastapi import Depends, HTTPException
 from sqlalchemy import insert, select, update
 from sqlalchemy.exc import IntegrityError, OperationalError, DBAPIError
 
-from src.app.auth.schemas import CreateUser
+from src.app.schemas.schemas import CreateUser
 from src.app.core.db_dependency import DBDependency
 from src.app.db.models import User
 

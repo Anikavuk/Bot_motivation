@@ -9,15 +9,15 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from datetime import datetime, timezone
 
-from src.app.auth.schemas import CreateUser
-from src.app.auth.user_service import UserService
+from src.app.schemas.schemas import CreateUser
+from src.app.services.user_service import UserService
 from src.app.services.prediction_service import PredictionService
-from src.app.services.motivation_ai import HuggingFacePredictor
+from src.app.services.motivation_service import HuggingFacePredictor
 
 logger = get_logger(name=__name__)
 
 router = APIRouter()
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = BASE_DIR / "templates"
 
 templates = Jinja2Templates(directory=str(TEMPLATES_DIR))

@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from starlette.middleware.sessions import SessionMiddleware
 
-from src.app.api.endpoints.pages import router
+from src.app.api.routes import router
 from src.app.botlogic.bot_manager import BotManager
 
 load_dotenv()

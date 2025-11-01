@@ -1,7 +1,7 @@
 from unittest.mock import AsyncMock
 import pytest
 
-from src.app.auth.user_service import UserService
+from src.app.services.user_service import UserService
 from src.app.core.config_run import web_app
 from src.app.services.prediction_service import PredictionService
 from tests.fake_settings import fake_settings

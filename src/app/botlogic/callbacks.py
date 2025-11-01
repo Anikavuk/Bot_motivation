@@ -2,7 +2,7 @@ from aiogram import Router
 from aiogram.types import CallbackQuery
 
 from src.app.core.logger import get_logger
-from src.app.services.motivation_ai import HuggingFacePredictor, StrictHuggingFacePredictor
+from src.app.services.motivation_service import HuggingFacePredictor, StrictHuggingFacePredictor
 
 logger = get_logger(name=__name__)
 class ToneCallbackHandler:

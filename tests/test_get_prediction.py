@@ -5,7 +5,7 @@ from src.app.core.config_run import web_app
 import pytest
 from httpx import AsyncClient, ASGITransport
 from unittest.mock import patch, AsyncMock
-from src.app.services.motivation_ai import HuggingFacePredictor
+from src.app.services.motivation_service import HuggingFacePredictor
 
 
 @pytest.mark.asyncio
