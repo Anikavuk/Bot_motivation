@@ -10,11 +10,11 @@ COPY src ./src
 RUN uv sync --locked
 
 # --- Финальный образ ---
-FROM python:3.13-slim
+FROM ghcr.io/astral-sh/uv:python3.13-trixie-slim AS runtime
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y make
+RUN apt update && apt install -y make
 
 COPY --from=builder /build/.venv .venv
 COPY . .
