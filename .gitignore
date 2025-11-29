@@ -51,7 +51,9 @@ share/python-wheels/
 env/
 venv/
 ENV/
-
+logs/
+.coverage
+tree.txt
 
 ### Windows ###
 # Windows thumbnail cache files

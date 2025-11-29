@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block title %}Создать аккаунт{% endblock %} {%
+block content %}
+<div class="d-flex justify-content-center">
+  <div
+    class="card shadow-lg p-4"
+    style="max-width: 600px; width: 100%; border-radius: 1rem"
+  >
+    <h1 class="text-center mb-3">Привет, ещё раз! 👋</h1>
+    <p class="text-center mb-4 fs-5 text-muted">
+      Напиши своё имя, чтобы получать персональные и приятные предсказания!
+    </p>
+
+    <form method="post" action="/save_user" class="mt-3">
+      <div class="mb-4">
+        <label for="name" class="form-label fs-5">Имя:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          class="form-control form-control-lg"
+          style="border-radius: 0.75rem"
+        />
+      </div>
+
+      <div class="d-flex justify-content-center mt-4">
+        <button
+          type="submit"
+          class="btn btn-primary btn-lg px-4 py-2"
+          style="border-radius: 0.75rem"
+        >
+          Сохранить
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

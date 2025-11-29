@@ -8,3 +8,4 @@ __pycache__/
 .gitignore
 README.md
 docker-compose*.yaml
+.env

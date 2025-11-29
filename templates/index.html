@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block title %}Главная страница{% endblock %} {%
+block content %}
+<div class="d-flex justify-content-center">
+  <div
+    class="card shadow-lg p-4"
+    style="max-width: 600px; width: 100%; border-radius: 1rem"
+  >
+    <h1 class="text-center mb-3">Привет, мой хороший! 💛</h1>
+    <p class="text-center mb-4 fs-5 text-muted">
+      Я твой заботливый бот‑мотиватор. <br />
+      Поддержу тебя в трудную минуту и дам прогноз на сегодняшний день.
+    </p>
+
+    <div class="d-flex justify-content-center">
+      <a
+        href="/create_user"
+        class="btn btn-primary btn-lg px-4 py-2"
+        style="border-radius: 0.75rem"
+      >
+        Создать аккаунт
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

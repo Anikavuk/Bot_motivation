@@ -1,0 +1,71 @@
+name: Lint and Test Project
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - id: setup-uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: 3.13
+          enable-cache: true
+
+      - name: Install dependencies
+        run: |
+          uv sync --all-extras --frozen
+          uv run pre-commit install
+
+      - name: Lint pre-commit
+        run: uv run pre-commit run --all-files
+
+      - name: Run Telegram Notify Action
+        uses: proDreams/actions-telegram-notifier@main
+        if: always()
+        with:
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
+          status: ${{ job.status }}
+          notify_fields: "actor,repository,branch,commit"
+          message: "Job: pre-commit linters"
+
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - id: setup-uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: 3.13
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync --all-extras --frozen
+
+      - name: Create .env
+        run: cp .env.example .env
+
+      - name: Run tests
+        run: uv run pytest
+
+      - name: Run Telegram Notify Action
+        uses: proDreams/actions-telegram-notifier@main
+        if: always()
+        with:
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
+          status: ${{ job.status }}
+          notify_fields: "actor,repository,branch,commit"
+          message: "Job: Tests"

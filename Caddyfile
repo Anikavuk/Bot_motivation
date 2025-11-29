@@ -1,0 +1,11 @@
+${SITE_DOMAIN} {
+    encode {
+        gzip
+    }
+
+    header {
+        X-Content-Type-Options "nosniff"
+    }
+
+    reverse_proxy prediction_app:8000
+}

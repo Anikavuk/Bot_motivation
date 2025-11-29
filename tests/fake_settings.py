@@ -1,5 +1,6 @@
 from pydantic import SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from starlette.templating import Jinja2Templates
 
 
 class FakeDBSettings(BaseSettings):
@@ -37,8 +38,14 @@ class FakeSettings(BaseSettings):
     db_settings: FakeDBSettings = FakeDBSettings()
     hf_settings: FakeHuggingFaceSettings = FakeHuggingFaceSettings()
     bot_settings: FakeBotSettings = FakeBotSettings()
+    session_secret: SecretStr
+    templates_dir: str
 
     model_config = SettingsConfigDict(extra="ignore")
+
+    @property
+    def templates(self) -> Jinja2Templates:
+        return Jinja2Templates(directory=self.templates_dir)
 
 
 fake_settings = FakeSettings()

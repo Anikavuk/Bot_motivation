@@ -1,0 +1,38 @@
+services:
+  web:
+    image: ghcr.io/astral-sh/uv:python3.11-bookworm
+    container_name: prediction_app
+    command: make run_prod
+    restart: unless-stopped
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:17.5-alpine
+    container_name: prediction_db
+    env_file:
+      - .env
+    volumes:
+      - prediction_db:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  prediction_db:
+  caddy_data:
+  caddy_config:

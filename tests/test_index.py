@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 
-from src.app.core.config_run import web_app
+from prediction_app.core.config_run import web_app
 
 client = TestClient(web_app)
 
