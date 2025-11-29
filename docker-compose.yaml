@@ -7,7 +7,7 @@ services:
     volumes:
       - ./logs:/app/logs
     depends_on:
-      db:
+      prediction_db:
         condition: service_healthy
 
   prediction_db:
