@@ -1,9 +1,10 @@
 from unittest.mock import AsyncMock
+
 import pytest
 
-from src.app.services.user_service import UserService
-from src.app.core.config_run import web_app
-from src.app.services.prediction_service import PredictionService
+from prediction_app.core.config_run import web_app
+from prediction_app.services.prediction_service import PredictionService
+from prediction_app.services.user_service import UserService
 from tests.fake_settings import fake_settings
 
 
@@ -12,7 +13,7 @@ def patch_settings(monkeypatch):
     def mock_get_settings():
         return fake_settings
 
-    monkeypatch.setattr("src.app.core.settings.get_settings", mock_get_settings)
+    monkeypatch.setattr("prediction_app.core.settings.get_settings", mock_get_settings)
 
 
 @pytest.fixture()
