@@ -1,6 +1,7 @@
-from src.app.core.config_run import web_app
 import pytest
-from httpx import AsyncClient, ASGITransport
+from httpx import ASGITransport, AsyncClient
+
+from prediction_app.core.config_run import web_app
 
 
 @pytest.mark.asyncio

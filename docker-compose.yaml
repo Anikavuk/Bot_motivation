@@ -1,0 +1,28 @@
+services:
+  prediction_app:
+    image: ghcr.io/...:latest
+    container_name: prediction_app
+    command: make run_prod
+    restart: unless-stopped
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      db:
+        condition: service_healthy
+
+  prediction_db:
+    image: postgres:17.5-alpine
+    container_name: prediction_db
+    env_file:
+      - .env
+    volumes:
+      - prediction_db:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "sh -c 'pg_isready -U ${DB_USER} -d ${DB_NAME}'" ]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+volumes:
+  prediction_db:

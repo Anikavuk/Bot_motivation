@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block title %}Предсказание{% endblock %} {% block
+content %}
+<div class="d-flex justify-content-center">
+  <div
+    class="card shadow-lg p-4 text-center"
+    style="max-width: 650px; width: 100%; border-radius: 1rem"
+  >
+    <h1 class="mb-3">Твоё предсказание ✨</h1>
+    <div
+      class="p-4 mt-3 mb-2 rounded-4 border shadow-sm bg-white"
+      style="background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(4px)"
+    >
+      <h2
+        class="fs-3 text-primary m-0"
+        style="line-height: 1.6; font-weight: 600"
+      >
+        {{ prediction }}
+      </h2>
+    </div>
+  </div>
+</div>
+{% endblock %}
