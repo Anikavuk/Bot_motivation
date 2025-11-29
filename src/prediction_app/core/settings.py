@@ -6,9 +6,9 @@ from starlette.templating import Jinja2Templates
 class DBSettings(BaseSettings):
     """Класс для настройки параметров подключения к базе данных."""
 
-    db_name: str
-    db_user: str
-    db_password: SecretStr
+    postgres_db: str
+    postgres_user: str
+    postgres_password: SecretStr
     db_host: str
     db_port: int
     db_echo: bool
@@ -17,7 +17,7 @@ class DBSettings(BaseSettings):
 
     @property
     def db_url(self):
-        return f"postgresql+asyncpg://{self.db_user}:{self.db_password.get_secret_value()}@{self.db_host}:{self.db_port}/{self.db_name}"
+        return f"postgresql+asyncpg://{self.postgres_user}:{self.postgres_password.get_secret_value()}@{self.db_host}:{self.db_port}/{self.postgres_db}"
 
 
 class HuggingFaceSettings(BaseSettings):
