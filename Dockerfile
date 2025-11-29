@@ -9,7 +9,7 @@ COPY pyproject.toml uv.lock ./
 RUN uv venv --python 3.13 /venv
 
 # Активируем виртуальное окружение и устанавливаем зависимости через uv sync
-uv sync --locked
+RUN uv sync --locked
 
 # --- Финальный образ ---
 FROM python:3.13-slim
