@@ -31,8 +31,8 @@ dependencies = [
 requires = ["uv_build>=0.9.11,<0.10.0"]
 build-backend = "uv_build"
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/prediction_app"]
+#[tool.hatch.build.targets.wheel]
+#packages = ["src/prediction_app"]
 
 [project.scripts]
 app = "prediction_app.main:start"
