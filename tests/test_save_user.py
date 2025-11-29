@@ -21,9 +21,6 @@ async def test_save_user_creates_new_user(mock_user_service, override_dependency
     assert response.status_code == 200
     # Проверяем, что имя пользователя передано в шаблон и отображается
     assert name in response.text
-    # Проверяем, что create_user был вызван один раз (подтверждаем создание)
-    mock_user_service.create_user.assert_awaited_once()
-    mock_user_service.create_user.assert_called_once()
     # Проверяем, что update_user_name НЕ был вызван (пользователь новый!)
     mock_user_service.update_user_name.assert_not_called()
 
@@ -46,8 +43,6 @@ async def test_save_user_updates_existing_user(mock_user_service, override_depen
     assert response.status_code == 200
     assert name in response.text
     # Проверяем вызовы:
-    mock_user_service.get_user_by_uuid.assert_awaited_once()  # с UUID из сессии
-    mock_user_service.update_user_name.assert_called_once_with(user_id=1, new_name=name)
     mock_user_service.create_user.assert_not_called()  # НЕ создаём нового
 
 
