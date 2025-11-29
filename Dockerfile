@@ -3,7 +3,8 @@ FROM ghcr.io/astral-sh/uv:python3.13-trixie AS builder
 WORKDIR /build
 
 # Копируем файл проекта с зависимостями
-COPY pyproject.toml uv.lock ./
+COPY pyproject.toml uv.lock README.md ./
+COPY src ./src
 
 # Активируем виртуальное окружение и устанавливаем зависимости через uv sync
 RUN uv sync --locked
@@ -15,7 +16,7 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y make
 
-COPY --from=builder /.venv /.venv
-COPY ../.. .
+COPY --from=builder /build/.venv .venv
+COPY . .
 
 EXPOSE 8000
