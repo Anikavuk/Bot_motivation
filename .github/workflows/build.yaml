@@ -94,15 +94,18 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set lowercase repo
+        run: echo "REPO_LOWER=$(echo $GITHUB_REPOSITORY | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           push: true
-          cache-from: type=registry,ref=ghcr.io/${{ github.repository }}/bot_motivation:latest
+          cache-from: type=registry,ref=ghcr.io/${{ env.REPO_LOWER }}:latest
           cache-to: type=inline
           tags: |
-            ghcr.io/${{ github.repository }}/bot_motivation:latest
-            ghcr.io/${{ github.repository }}/bot_motivation:${{ github.sha }}
+            ghcr.io/${{ env.REPO_LOWER }}:latest
+            ghcr.io/${{ env.REPO_LOWER }}:${{ github.sha }}
 
 
       - name: Run Telegram Notify Action
